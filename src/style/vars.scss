@@ -1,6 +1,18 @@
 $peachColor: #ffcaa4;
+@import "../style/App.scss";
+
 $violetColor: #9372ab;
 $lilacColor: #de99e4;
 $yellowColor: #fffda4;
+$peachColor: #ffdfc9;
+$blackColor: #000000;
+$whiteColor: #ffffff;
 
 $fontFamily: Montserrat;
+
+@mixin textCenterRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
