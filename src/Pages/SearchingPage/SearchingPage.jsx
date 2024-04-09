@@ -8,27 +8,30 @@ export default function SearchingPage() {
     const [searchMessage, setSearchMessage] = useState('');
 
     useEffect(() => {
-        setSearchResults(userData.members)
-    }, []);
+        if (searchTerm.length >= 3 && searchTerm.length <= 5) {
+            const filteredUsers = userData.members.filter((user) =>
+                (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || user.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
+            );
+            setSearchResults(filteredUsers);
+            setSearchMessage('');
+        } else {
+            const filteredUsers = userData.members.filter((user) =>
+                (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || user.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
+            );
+            setSearchResults(filteredUsers);
+            if (searchTerm.length > 5 && filteredUsers.length === 0) {
+                setSearchMessage('Пользователь не найден');
+            } else {
+                setSearchMessage('');
+            }
+        }
+    }, [searchTerm]);
 
     const handleSearchInputChange = (event) => {
         const inputText = event.target.value;
         setSearchTerm(inputText);
     }
 
-    if (inputText.length >= 3 && inputText.length <= 5) {
-        const filteredUsers = userData.members.filter((user) =>
-            (user.firstName.toLowerCase.includes(inputText.toLowerCase()) || user.lastName.toLowerCase.includes(inputText.toLowerCase()))
-        );
-        setSearchResults(filteredUsers);
-        setSearchMessage('');
-    } else if (inputText.length > 5) {
-        setSearchResults([]);
-        setSearchMessage('Пользователь не найден');
-    } else {
-        setSearchResults(userData.members);
-        setSearchMessage('');
-    }
 
     return (
         <div>
@@ -41,9 +44,12 @@ export default function SearchingPage() {
             <div>
                 <ul>
                     {searchResults.map((user) => (
-                        <li key={user.id}>{user.name}</li>
+                        <li key={user.id}>{user.firstName} {user.lastName}</li>
                     ))}
                 </ul>
+            </div>
+            <div>
+                <p>{searchMessage}</p>
             </div>
         </div>
     )
