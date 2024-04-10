@@ -3,9 +3,9 @@
 
 .mainscreen__main {
   padding: 8vh 0;
-  display: grid;
-  grid-template-columns: 1fr 0.5fr 1fr;
-  gap: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 98%;
 }
 @media (width < 900px) {
@@ -37,7 +37,6 @@
   align-self: flex-end;
 }
 .position-left-start {
-  // padding-left: 1vh;
   justify-items: center;
   align-self: flex-start;
 }
@@ -46,11 +45,9 @@
   align-self: flex-end;
 }
 .position-right-start {
-  // padding-left: 1vh;
   justify-items: flex-start;
   align-self: flex-start;
 }
 .position-center {
   justify-self: flex-start;
-  // padding-left: 2vh;
 }

@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import "./../MainScreen.scss";
 
 import "./MainDepartments.scss";
-
-const randomIntFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+import { randomIntFromInterval } from "../../../../helpers/commonFunctions";
 
 const arrayOfItems = [
+  "Aviasystem",
+  "Aviasystem",
+  "Aviasystem",
+  "Aviasystem",
+  "Aviasystem",
+  "Aviasystem",
+  "Aviasystem",
   "Aviasystem",
   "Aviasystem",
   "Aviasystem",

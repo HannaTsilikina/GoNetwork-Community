@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
-
 import "./../MainScreen.scss";
-
 import "./MainProfessions.scss";
-
-const randomIntFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+import { randomIntFromInterval } from "../../../../helpers/commonFunctions";
 
 const arrayOfItems = [
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
+  "Аналитик",
   "Аналитик",
   "Аналитик",
   "Аналитик",
@@ -56,7 +59,7 @@ const MainProfessions = () => {
         let color = ColorChange();
         let size = SizeChange();
         return (
-          <Link className="mainscreen__company" key={index}>
+          <Link className="mainscreen__professions" key={index}>
             <div
               className={`mainscreen__profession ${position} ${color} ${size}`}
             >

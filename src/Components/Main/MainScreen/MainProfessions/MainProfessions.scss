@@ -5,13 +5,12 @@
   display: grid;
   gap: 3vh;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 .mainscreen-main__items {
   a {
     text-decoration: none;
   }
-  .mainscreen__company {
+  .mainscreen__professions {
     cursor: pointer;
     display: flex;
   }
@@ -93,4 +92,10 @@
 .sizeXL {
   height: 18vh;
   width: 18vh;
+}
+.mainscreen-main__items {
+  .mainscreen__profession:hover {
+    text-decoration: underline;
+    text-decoration-color: $blackColor;
+  }
 }
