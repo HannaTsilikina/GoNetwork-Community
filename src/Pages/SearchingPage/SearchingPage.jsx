@@ -32,6 +32,8 @@ export default function SearchingPage() {
         setSearchTerm(inputText);
     }
 
+    const getRandomValue = () => Math.floor(Math.random() * 22) + 1;
+
     return (
         <div className='sp__container'>
             <div className='sp__container-input'>
@@ -47,7 +49,16 @@ export default function SearchingPage() {
                 {searchResults.length > 0 && (
                     <div className='sp__container-result-users'>
                         {searchResults.map((user) => (
-                            <div className='sp__container-result-users-user' key={user.id}>{user.firstName} {user.lastName}</div>
+                            <div
+                                key={user.id}
+                                className="sp__container-result-users-user"
+                                style={{
+                                    gridColumn: `${getRandomValue()} / span 1`,
+                                    gridRow: `${getRandomValue()} / span 1`,
+                                }}
+                            >
+                                {user.firstName} {user.lastName}
+                            </div>
                         ))}
                     </div>
                 )}
