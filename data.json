@@ -368,6 +368,186 @@
                     "status": "Уже знает"
                 }
             ]
+        },
+        {
+            "id": 17,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "firstName": "Другие имя",
+            "lastName": "И фамилия тоже",
+            "companies": [
+                1
+            ],
+            "direstions": [
+                {
+                    "id": 2,
+                    "status": "Уже знает"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Архивирование",
+                    "status": "Уже знает"
+                }
+            ]
         }
     ]
 }

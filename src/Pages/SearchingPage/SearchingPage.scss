@@ -4,18 +4,20 @@
     width         : 100%;
     display       : flex;
     flex-direction: column;
-    margin        : 2em 20em 0 20em;
+    margin        : 2em auto;
 
     font-family: $fontFamily;
 
     .sp__container-input {
         position: relative;
-        width   : 150px;
+        width   : 140px;
         display : flex;
+        margin  : 1em auto;
 
         input {
             width   : 100%;
-            padding : 5px 0;
+            height  : 34px;
+            padding : 5px auto;
             overflow: visible;
 
             outline         : none;
@@ -30,35 +32,48 @@
             color      : rgb(0, 0, 0);
         }
 
+        input::placeholder {
+            color: rgb(0, 0, 0);
+        }
+
         span {
             position        : absolute;
             margin          : 0 10px;
-            width           : 90%;
+            padding         : 5px auto;
+            width           : 85%;
             height          : 100%;
             background-color: $peachColor;
             z-index         : -1;
-            border          : 1px solid $peachColor;
             border-radius   : 12px;
         }
     }
 
-
-
-
-
-
     .sp__container-result {
+        width  : 100%;
         display: flex;
+        margin : 0 auto;
 
+        p {
+            margin: 0 auto;
+        }
 
         .sp__container-result-users {
-            display: grid;
-
+            width                : 100%;
+            display              : grid;
+            grid-template-columns: repeat(auto-fit);
+            grid-template-rows   : repeat(auto-fit);
+            gap                  : 10px;
 
             .sp__container-result-users-user {
-                width : 100%;
-                margin: 5px;
-                border: 1px solid black;
+                width          : 100px;
+                height         : 100px;
+                display        : flex;
+                padding        : 10px;
+                justify-content: space-between;
+                align-items    : center;
+                border         : 1px solid $lilacColor;
+                border-radius  : 100px;
+                text-align     : center;
             }
         }
     }
