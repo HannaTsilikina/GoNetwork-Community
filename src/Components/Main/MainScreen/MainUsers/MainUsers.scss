@@ -1,0 +1,39 @@
+.mainscreen-main__workers {
+  display: grid;
+  gap: 3vh;
+  grid-template-columns: 1.5fr 1fr 0.75fr;
+  grid-template-rows: 2fr 2.5fr 1.75fr 1fr;
+
+  img {
+    height: 77px;
+    width: 77px;
+  }
+
+  a {
+    display: flex;
+  }
+}
+@media (width < 900px) {
+  .mainscreen-main__workers {
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+@media (width < 1124px) {
+  .mainscreen-main__workers {
+    img {
+      height: 60px;
+      width: 60px;
+    }
+  }
+}
+@media (width >1800px) {
+  .mainscreen-main__workers {
+    img {
+      height: 90px;
+      width: 90px;
+    }
+  }
+}

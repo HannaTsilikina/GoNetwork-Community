@@ -5,6 +5,9 @@ header {
   display: flex;
   flex-direction: column;
   gap: 4vh;
+  a {
+    text-decoration: none;
+  }
 }
 
 .header__logo {

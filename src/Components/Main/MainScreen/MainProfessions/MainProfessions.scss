@@ -1,0 +1,96 @@
+@import "../../../../style/vars.scss";
+@import "../../../../style/App.scss";
+
+.mainscreen-main__items {
+  display: grid;
+  gap: 3vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.mainscreen-main__items {
+  a {
+    text-decoration: none;
+  }
+  .mainscreen__company {
+    cursor: pointer;
+    display: flex;
+  }
+  .mainscreen__profession {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $blackColor;
+    font-family: $fontFamily;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+}
+
+@media (width >1800px) {
+  .mainscreen-main__items {
+    .mainscreen__profession {
+      font-size: 1.5rem;
+    }
+  }
+}
+@media (width < 1440px) {
+  .mainscreen-main__items {
+    display: grid;
+    gap: 3vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media (width < 1024px) {
+  .mainscreen-main__items {
+    .mainscreen__profession {
+      border-radius: 50%;
+      height: 14vh;
+      width: 14vh;
+      font-size: 0.75rem;
+    }
+  }
+}
+@media (width < 1124px) {
+  .mainscreen-main__items {
+    .mainscreen__profession {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.pink100 {
+  background-color: rgb(251, 218, 254);
+}
+.pink200 {
+  background-color: rgb(235, 194, 239);
+}
+.pink400 {
+  background-color: rgb(222, 153, 228);
+}
+.pink500 {
+  background-color: rgb(203, 110, 211);
+}
+.sizeXS {
+  height: 13vh;
+  width: 13vh;
+}
+.sizeS {
+  height: 15vh;
+  width: 15vh;
+}
+.sizeM {
+  height: 16vh;
+  width: 16vh;
+}
+.sizeL {
+  height: 17vh;
+  width: 17vh;
+}
+.sizeXL {
+  height: 18vh;
+  width: 18vh;
+}
