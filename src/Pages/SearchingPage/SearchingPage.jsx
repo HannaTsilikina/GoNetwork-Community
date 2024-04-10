@@ -40,16 +40,18 @@ export default function SearchingPage() {
                     value={searchTerm}
                     onChange={handleSearchInputChange}
                     placeholder='Введите имя'
-                />
+                /><span></span>
             </div>
-            <div className='sp__container-message'>
-                <p>{searchMessage}</p>
+            <div className='sp__container-result'>
+                {searchMessage && (<p>{searchMessage}</p>)}
+                {searchResults.length > 0 && (
+                    <div className='sp__container-result-users'>
+                        {searchResults.map((user) => (
+                            <div className='sp__container-result-users-user' key={user.id}>{user.firstName} {user.lastName}</div>
+                        ))}
+                    </div>
+                )}
             </div>
-            <ul className='sp__container-users'>
-                {searchResults.map((user) => (
-                    <li key={user.id}>{user.firstName} {user.lastName}</li>
-                ))}
-            </ul>
         </div>
     )
 }

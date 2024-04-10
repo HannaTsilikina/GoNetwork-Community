@@ -1,26 +1,27 @@
 @import '../../style/vars.scss';
 
 .sp__container {
+    width         : 100%;
     display       : flex;
     flex-direction: column;
-    margin        : 2em auto;
+    margin        : 2em 20em 0 20em;
 
     font-family: $fontFamily;
 
     .sp__container-input {
         position: relative;
-        width   : 200px;
+        width   : 150px;
         display : flex;
 
         input {
             width   : 100%;
-            padding : 5px auto;
+            padding : 5px 0;
             overflow: visible;
 
             outline         : none;
             border          : none;
             border-radius   : 10px;
-            background-color: $peachColor;
+            background-color: transparent;
 
             font-size  : 20px;
             font-weight: 500;
@@ -29,24 +30,36 @@
             color      : rgb(0, 0, 0);
         }
 
-        input:after {
-            content : '';
-            position: absolute;
-            top     : 0;
-            left    : 0;
-            width   : 100%;
-            height  : 100%;
-
-            pointer-events: none;
+        span {
+            position        : absolute;
+            margin          : 0 10px;
+            width           : 90%;
+            height          : 100%;
+            background-color: $peachColor;
+            z-index         : -1;
+            border          : 1px solid $peachColor;
+            border-radius   : 12px;
         }
     }
 
-    .sp__container-message {
-        display: flex;
-    }
 
-    .sp__container-users {
-        display        : grid;
-        list-style-type: none;
+
+
+
+
+    .sp__container-result {
+        display: flex;
+
+
+        .sp__container-result-users {
+            display: grid;
+
+
+            .sp__container-result-users-user {
+                width : 100%;
+                margin: 5px;
+                border: 1px solid black;
+            }
+        }
     }
 }
