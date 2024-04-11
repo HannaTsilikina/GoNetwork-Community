@@ -1,64 +1,644 @@
 {
     "companies":[
         {
-            "id":1,
-            "name": "Название компании"
-        },
-        {
-            "id":2,
-            "name": "Другая компания"
-        }
-    ],
-    "direstions":[
-        {
             "id": 1,
-            "name": "Вот какое направление крутое"
+            "name": "Company 1"
         },
         {
             "id": 2,
-            "name": "А это еще лучше"
+            "name": "Company 2"
+        },
+        {
+            "id": 3,
+            "name": "Company 3"
+        },
+        {
+            "id": 4,
+            "name": "Company 4"
+        },
+        {
+            "id": 5,
+            "name": "Company 5"
+        },
+        {
+            "id": 6,
+            "name": "Company 6"
+        },
+        {
+            "id": 7,
+            "name": "Company 7"
+        },
+        {
+            "id": 8,
+            "name": "Company 8"
+        },
+        {
+            "id": 9,
+            "name": "Company 9"
+        },
+        {
+            "id": 10,
+            "name": "Company 10"
+        },
+        {
+            "id": 11,
+            "name": "Company 11"
+        },
+        {
+            "id": 12,
+            "name": "Company 12"
+        },
+        {
+            "id": 13,
+            "name": "Company 13"
+        },
+        {
+            "id": 14,
+            "name": "Company 14"
+        },
+        {
+            "id": 15,
+            "name": "Company 15"
+        }
+    ],
+    "directions":[
+        {
+            "id": 1,
+            "name": "Direction 1"
+        },
+        {
+            "id": 2,
+            "name": "Direction 2"
+        },
+        {
+            "id": 3,
+            "name": "Direction 3"
+        },
+        {
+            "id": 4,
+            "name": "Direction 4"
+        },
+        {
+            "id": 5,
+            "name": "Direction 5"
+        },
+        {
+            "id": 6,
+            "name": "Direction 6"
+        },
+        {
+            "id": 7,
+            "name": "Direction 7"
+        },
+        {
+            "id": 8,
+            "name": "Direction 8"
+        },
+        {
+            "id": 9,
+            "name": "Direction 9"
+        },
+        {
+            "id": 10,
+            "name": "Direction 10"
+        },
+        {
+            "id": 11,
+            "name": "Direction 11"
+        },
+        {
+            "id": 12,
+            "name": "Direction 12"
+        },
+        {
+            "id": 13,
+            "name": "Direction 13"
+        },
+        {
+            "id": 14,
+            "name": "Direction 14"
+        },
+        {
+            "id": 15,
+            "name": "Direction 15"
         }
     ],
     "members":[
         {
-            "firstName": "Имя",
-            "lastName": "Фамилия",
-            "companies": [1,2],
-            "direstions": [
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "companies": [1, 2, 3],
+            "directions": [
                 {
-                    "id":1,
-                    "status": "Уже знает"
+                    "id": 1,
+                    "status": "Knows"
                 },
                 {
-                    "id":2,
-                    "status": "Хочет изучить"
+                    "id": 2,
+                    "status": "Wants to learn"
                 }
             ],
             "skills": [
                 {
-                    "name": "Архивирование",
-                    "status": "Уже знает"
+                    "name": "Archiving",
+                    "status": "Knows"
                 },
                 {
-                    "name": "Разархивирование",
-                    "status": "Хочет изучить"
+                    "name": "Unarchiving",
+                    "status": "Wants to learn"
                 }
             ]
         },
         {
-            "firstName": "Другие имя",
-            "lastName": "И фамилия тоже",
-            "companies": [1],
-            "direstions": [
+            "id": 2,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "companies": [1, 4],
+            "directions": [
                 {
-                    "id":2,
-                    "status": "Уже знает"
+                    "id": 3,
+                    "status": "Knows"
                 }
             ],
             "skills": [
                 {
-                    "name": "Архивирование",
-                    "status": "Уже знает"
+                    "name": "Archiving",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "firstName": "Mike",
+            "lastName": "Johnson",
+            "companies": [2, 5],
+            "directions": [
+                {
+                    "id": 4,
+                    "status": "Knows"
+                },
+                {
+                    "id": 5,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Coding",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "firstName": "Emily",
+            "lastName": "Brown",
+            "companies": [3],
+            "directions": [
+                {
+                    "id": 6,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Design",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "firstName": "David",
+            "lastName": "Anderson",
+            "companies": [4],
+            "directions": [
+                {
+                    "id": 7,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Testing",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "firstName": "Sophia",
+            "lastName": "Lee",
+            "companies": [5],
+            "directions": [
+                {
+                    "id": 8,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Marketing",
+                    "status": "Knows"
+                },
+                {
+                    "name": "SEO",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "firstName": "Daniel",
+            "lastName": "Taylor",
+            "companies": [1, 6],
+            "directions": [
+                {
+                    "id": 9,
+                    "status": "Knows"
+                },
+                {
+                    "id": 10,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Project Management",
+                    "status": "Knows"
+                },
+                {
+                    "name": "Team Leadership",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "firstName": "Olivia",
+            "lastName": "Martinez",
+            "companies": [2, 7],
+            "directions": [
+                {
+                    "id": 11,
+                    "status": "Knows"
+                },
+                {
+                    "id": 12,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Research",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "firstName": "Michael",
+            "lastName": "Davis",
+            "companies": [3, 8],
+            "directions": [
+                {
+                    "id": 13,
+                    "status": "Wants to learn"
+                },
+                {
+                    "id": 14,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Analytics",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "firstName": "Emma",
+            "lastName": "Garcia",
+            "companies": [4, 9],
+            "directions": [
+                {
+                    "id": 15,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "UI/UX Design",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "firstName": "William",
+            "lastName": "Clark",
+            "companies": [5, 10],
+            "directions": [
+                {
+                    "id": 1,
+                    "status": "Knows"
+                },
+                {
+                    "id": 2,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Communication",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "firstName": "Natalie",
+            "lastName": "Lopez",
+            "companies": [6, 11],
+            "directions": [
+                {
+                    "id": 3,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Illustration",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "firstName": "Andrew",
+            "lastName": "Perez",
+            "companies": [7, 12],
+            "directions": [
+                {
+                    "id": 4,
+                    "status": "Knows"
+                },
+                {
+                    "id": 5,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Database Management",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "firstName": "Samantha",
+            "lastName": "Harris",
+            "companies": [8, 13],
+            "directions": [
+                {
+                    "id": 6,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Social Media Marketing",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "firstName": "Christopher",
+            "lastName": "Young",
+            "companies": [9, 14],
+            "directions": [
+                {
+                    "id": 7,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Video Editing",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "firstName": "Isabella",
+            "lastName": "King",
+            "companies": [10, 15],
+            "directions": [
+                {
+                    "id": 8,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Animation",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "firstName": "Grayson",
+            "lastName": "Baker",
+            "companies": [11],
+            "directions": [
+                {
+                    "id": 9,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "E-commerce",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "firstName": "Ava",
+            "lastName": "Gonzalez",
+            "companies": [12],
+            "directions": [
+                {
+                    "id": 10,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Content Writing",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "firstName": "Ethan",
+            "lastName": "Evans",
+            "companies": [13],
+            "directions": [
+                {
+                    "id": 11,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Mobile App Development",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "firstName": "Sophie",
+            "lastName": "Morris",
+            "companies": [14],
+            "directions": [
+                {
+                    "id": 12,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "SEO",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "firstName": "Heather",
+            "lastName": "Rodriguez",
+            "companies": [15],
+            "directions": [
+                {
+                    "id": 13,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Graphic Design",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "firstName": "Richard",
+            "lastName": "Martinez",
+            "companies": [6, 14],
+            "directions": [
+                {
+                    "id": 14,
+                    "status": "Knows"
+                },
+                {
+                    "id": 15,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "SEO Optimization",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "firstName": "Madison",
+            "lastName": "Perez",
+            "companies": [7, 8],
+            "directions": [
+                {
+                    "id": 1,
+                    "status": "Wants to learn"
+                },
+                {
+                    "id": 2,
+                    "status": "Knows"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Customer Support",
+                    "status": "Wants to learn"
+                },
+                {
+                    "name": "Sales",
+                    "status": "Knows"
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "firstName": "Cooper",
+            "lastName": "Flores",
+            "companies": [9, 10],
+            "directions": [
+                {
+                    "id": 3,
+                    "status": "Knows"
+                },
+                {
+                    "id": 4,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Landing Page Design",
+                    "status": "Knows"
+                },
+                {
+                    "name": "Email Marketing",
+                    "status": "Wants to learn"
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "firstName": "Mia",
+            "lastName": "Lopez",
+            "companies": [11, 12, 13],
+            "directions": [
+                {
+                    "id": 5,
+                    "status": "Knows"
+                },
+                {
+                    "id": 6,
+                    "status": "Wants to learn"
+                }
+            ],
+            "skills": [
+                {
+                    "name": "Social Network Analysis",
+                    "status": "Knows"
+                },
+                {
+                    "name": "Big Data",
+                    "status": "Wants to learn"
                 }
             ]
         }
