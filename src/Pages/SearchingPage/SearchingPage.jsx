@@ -6,6 +6,7 @@ export default function SearchingPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchMessage, setSearchMessage] = useState('');
+    const [positions, setPositions] = useState([]);
 
     useEffect(() => {
         if (searchTerm.length >= 3 && searchTerm.length <= 5) {
@@ -32,6 +33,32 @@ export default function SearchingPage() {
         setSearchTerm(inputText);
     }
 
+    const getRandomPosition = () => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+    });
+
+    useEffect(() => {
+        const newPositions = [];
+        searchResults.forEach(() => {
+            let newPosition;
+            do {
+                newPosition = {
+                    top: `${Math.random() * 90}%`,
+                    left: `${Math.random() * 90}%`,
+                };
+            } while (
+                newPositions.some(
+                    ({ top, left }) =>
+                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 10 &&
+                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 10
+                )
+            );
+            newPositions.push(newPosition);
+        });
+        setPositions(newPositions);
+    }, [searchResults]);
+
     return (
         <div className='sp__container'>
             <div className='sp__container-input'>
@@ -46,13 +73,13 @@ export default function SearchingPage() {
                 {searchMessage && (<p>{searchMessage}</p>)}
                 {searchResults.length > 0 && (
                     <div className='sp__container-result-users'>
-                        {searchResults.map((user) => (
+                        {searchResults.map((user, index) => (
                             <div
                                 key={user.id}
                                 className="sp__container-result-users-user"
                                 style={{
-                                    gridColumn: `span ${Math.floor(Math.random() * 4) + 1}`,
-                                    gridRow: `span ${Math.floor(Math.random() * 2) + 1}`,
+                                    top: positions[index] ? positions[index].top : '0%',
+                                    left: positions[index] ? positions[index].left : '0%',
                                 }}
                             >
                                 {user.firstName} {user.lastName}
@@ -61,6 +88,6 @@ export default function SearchingPage() {
                     </div>
                 )}
             </div>
-        </div>
+        </div >
     )
 }
