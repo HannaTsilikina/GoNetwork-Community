@@ -60,7 +60,9 @@
         .sp__container-result-users {
             width                : 100%;
             margin               : 0 auto;
-            padding              : 3em;
+            padding              : 5em;
+            border               : 1px solid transparent;
+            border-radius        : 20em;
             display              : grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap                  : 10px;
