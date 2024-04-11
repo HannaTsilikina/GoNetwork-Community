@@ -33,11 +33,6 @@ export default function SearchingPage() {
         setSearchTerm(inputText);
     }
 
-    const getRandomPosition = () => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-    });
-
     useEffect(() => {
         const newPositions = [];
         searchResults.forEach(() => {
