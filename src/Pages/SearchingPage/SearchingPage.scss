@@ -60,6 +60,7 @@
         .sp__container-result-users {
             width                : 100%;
             margin               : 0 auto;
+            padding              : 3em;
             display              : grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap                  : 10px;
@@ -68,6 +69,7 @@
                 width          : 77.86px;
                 height         : 77.86px;
                 display        : flex;
+                margin         : 2em;
                 padding        : 10px;
                 justify-content: space-between;
                 align-items    : center;

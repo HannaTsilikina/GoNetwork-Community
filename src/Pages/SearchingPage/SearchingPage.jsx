@@ -51,8 +51,8 @@ export default function SearchingPage() {
                                 key={user.id}
                                 className="sp__container-result-users-user"
                                 style={{
-                                    gridColumn: `span ${Math.floor(Math.random() * 6) + 1}`,
-                                    gridRow: `span ${Math.floor(Math.random() * 6) + 1}`,
+                                    gridColumn: `span ${Math.floor(Math.random() * 4) + 1}`,
+                                    gridRow: `span ${Math.floor(Math.random() * 1) + 1}`,
                                 }}
                             >
                                 {user.firstName} {user.lastName}
