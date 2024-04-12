@@ -30,7 +30,14 @@
 @media (width >1800px) {
   .mainscreen-main__items {
     .mainscreen__department {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+@media (width < 1540px) {
+  .mainscreen-main__items {
+    .mainscreen__department {
+      font-size: 0.95rem;
     }
   }
 }
@@ -51,13 +58,6 @@
     }
   }
 }
-@media (width < 1124px) {
-  .mainscreen-main__items {
-    .mainscreen__department {
-      font-size: 0.75rem;
-    }
-  }
-}
 
 .violet300 {
   background-color: rgb(179, 159, 234);
@@ -68,6 +68,7 @@
 .violet500 {
   background-color: rgb(128, 95, 220);
 }
+
 .sizeXS {
   height: 13vh;
   width: 13vh;

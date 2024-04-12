@@ -1,64 +1,27 @@
 import { Link } from "react-router-dom";
-
 import "./../MainScreen.scss";
-
 import "./MainDepartments.scss";
-import { randomIntFromInterval } from "../../../../helpers/commonFunctions";
+import data from "../../../../../data.json";
+import randomProperties from "../../../../helpers/RandomPosition";
 
-const arrayOfItems = [
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
-  "Aviasystem",
+const arrayOfCompanies = data.companies.map((item) => item.name);
+const arrayOfPosition = [
+  "position-left-start",
+  "position-left-end",
+  "position-center",
+  "position-right-end",
+  "position-right-start",
 ];
-const StylePosition = () => {
-  const arraysOfPosition = [
-    "position-left-start",
-    "position-left-end",
-    "position-center",
-    "position-right-end",
-    "position-right-start",
-  ];
-
-  const index = randomIntFromInterval(0, 4);
-
-  return arraysOfPosition[index];
-};
-const ColorChange = () => {
-  const arraysOfColors = ["violet300", "violet400", "violet500"];
-
-  const index = randomIntFromInterval(0, 2);
-
-  return arraysOfColors[index];
-};
-const SizeChange = () => {
-  const arraysOfSize = ["sizeXS", "sizeS", "sizeM", "sizeL", "sizeXL"];
-
-  const index = randomIntFromInterval(0, 2);
-
-  return arraysOfSize[index];
-};
+const arrayOfColors = ["violet300", "violet400", "violet500"];
+const arrayOfSize = ["sizeXXS", "sizeXS", "sizeS", "sizeM", "sizeL", "sizeXL"];
 
 const MainDepartments = () => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfItems.map((item, index) => {
-        let position = StylePosition();
-        let color = ColorChange();
-        let size = SizeChange();
+      {arrayOfCompanies.map((item, index) => {
+        let position = randomProperties(arrayOfPosition);
+        let color = randomProperties(arrayOfColors);
+        let size = randomProperties(arrayOfSize);
         return (
           <Link className="mainscreen__company" key={index}>
             <div

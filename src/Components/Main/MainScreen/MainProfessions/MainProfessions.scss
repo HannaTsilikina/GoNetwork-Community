@@ -3,7 +3,7 @@
 
 .mainscreen-main__items {
   display: grid;
-  gap: 3vh;
+  gap: 1vh;
   grid-template-columns: 1fr 1fr 1fr;
 }
 .mainscreen-main__items {
@@ -31,7 +31,14 @@
 @media (width >1800px) {
   .mainscreen-main__items {
     .mainscreen__profession {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+@media (width < 1540px) {
+  .mainscreen-main__items {
+    .mainscreen__profession {
+      font-size: 0.95rem;
     }
   }
 }
@@ -53,13 +60,6 @@
     }
   }
 }
-@media (width < 1124px) {
-  .mainscreen-main__items {
-    .mainscreen__profession {
-      font-size: 0.75rem;
-    }
-  }
-}
 
 .pink100 {
   background-color: rgb(251, 218, 254);
@@ -72,6 +72,10 @@
 }
 .pink500 {
   background-color: rgb(203, 110, 211);
+}
+.sizeXXS {
+  height: 13vh;
+  width: 13vh;
 }
 .sizeXS {
   height: 13vh;
