@@ -34,7 +34,7 @@ export default function SearchingPage() {
     }
 
     useEffect(() => {
-        const maxAttemptsPerElement = 60; // Максимальное количество попыток генерации уникальной позиции для каждого элемента
+        const maxAttemptsPerElement = 50; // Максимальное количество попыток генерации уникальной позиции для каждого элемента
         const maxElements = searchResults.length; // Количество элементов в результате поиска
         const maxAttempts = maxAttemptsPerElement * maxElements;
 
@@ -51,8 +51,8 @@ export default function SearchingPage() {
                     };
                     // Проверяем, не пересекается ли новая позиция с уже существующими позициями
                     isIntersecting = newPositions.some(({ top, left }) =>
-                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 16 &&
-                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 16
+                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 8 &&
+                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 7
                     );
                     attempts++;
                     // Если пересечение обнаружено и количество попыток не превышает максимальное количество, то продолжаем генерировать новые позиции
@@ -68,6 +68,13 @@ export default function SearchingPage() {
         setPositions(initialPositions);
     }, [searchResults]);
 
+    const calculateContainerHeight = () => {
+        const maxUsersPerPage = 20; // Максимальное количество пользователей на одной странице
+        const usersPerPage = Math.min(maxUsersPerPage, searchResults.length); // Количество пользователей на странице
+        const estimatedHeight = usersPerPage * (77.86 + 9); // Предполагаемая высота контейнера в пикселях
+        return estimatedHeight;
+    };
+
     return (
         <div className='sp__container'>
             <div className='sp__container-input'>
@@ -81,7 +88,7 @@ export default function SearchingPage() {
             <div className='sp__container-result'>
                 {searchMessage && (<p>{searchMessage}</p>)}
                 {searchResults.length > 0 && (
-                    <div className='sp__container-result-users'>
+                    <div className='sp__container-result-users' style={{ height: `${calculateContainerHeight()}px` }}>
                         {searchResults.map((user, index) => (
                             <div
                                 key={user.id}
