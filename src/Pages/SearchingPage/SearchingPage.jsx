@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import userData from '../../../data.json';
+import userData from '../../../WPT_data.json';
 import './SearchingPage.scss';
 
 export default function SearchingPage() {
@@ -34,24 +34,38 @@ export default function SearchingPage() {
     }
 
     useEffect(() => {
-        const newPositions = [];
-        searchResults.forEach(() => {
-            let newPosition;
-            do {
-                newPosition = {
-                    top: `${Math.random() * 90}%`,
-                    left: `${Math.random() * 90}%`,
-                };
-            } while (
-                newPositions.some(
-                    ({ top, left }) =>
-                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 10 &&
-                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 10
-                )
-            );
-            newPositions.push(newPosition);
-        });
-        setPositions(newPositions);
+        const maxAttemptsPerElement = 60; // Максимальное количество попыток генерации уникальной позиции для каждого элемента
+        const maxElements = searchResults.length; // Количество элементов в результате поиска
+        const maxAttempts = maxAttemptsPerElement * maxElements;
+
+        const generateUniquePositions = (maxAttempts) => {
+            const newPositions = [];
+            for (let i = 0; i < maxElements; i++) {
+                let attempts = 0;
+                let newPosition;
+                let isIntersecting; // Переменная isIntersecting должна быть объявлена здесь
+                do {
+                    newPosition = {
+                        top: `${Math.random() * 90}%`,
+                        left: `${Math.random() * 90}%`,
+                    };
+                    // Проверяем, не пересекается ли новая позиция с уже существующими позициями
+                    isIntersecting = newPositions.some(({ top, left }) =>
+                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 16 &&
+                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 16
+                    );
+                    attempts++;
+                    // Если пересечение обнаружено и количество попыток не превышает максимальное количество, то продолжаем генерировать новые позиции
+                } while (isIntersecting && attempts < maxAttempts);
+                if (!isIntersecting) {
+                    newPositions.push(newPosition);
+                }
+            }
+            return newPositions;
+        };
+
+        const initialPositions = generateUniquePositions(maxAttempts);
+        setPositions(initialPositions);
     }, [searchResults]);
 
     return (
