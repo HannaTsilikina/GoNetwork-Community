@@ -2,9 +2,10 @@ import "../style/App.scss";
 import SearchingPage from './SearchingPage/SearchingPage';
 
 function App() {
-  return <div className="app">
+  return <>
+    Hello world
     <SearchingPage />
-  </div>;
+  </>;
 }
 
 export default App;
