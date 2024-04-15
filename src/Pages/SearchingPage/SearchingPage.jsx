@@ -7,6 +7,7 @@ export default function SearchingPage() {
     const [searchResults, setSearchResults] = useState([]);
     const [searchMessage, setSearchMessage] = useState('');
     const [positions, setPositions] = useState([]);
+    const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({ top: 7, left: 8 });
 
     useEffect(() => {
         if (searchTerm.length >= 3 && searchTerm.length <= 5) {
@@ -33,29 +34,59 @@ export default function SearchingPage() {
         setSearchTerm(inputText);
     }
 
+    // Динамическое обновление пороговых значений в зависимости от изменений размера окна для адаптации условий пересечения позиций для разных размеров экрана.
     useEffect(() => {
-        const maxAttemptsPerElement = 50; // Максимальное количество попыток генерации уникальной позиции для каждого элемента
-        const maxElements = searchResults.length; // Количество элементов в результате поиска
+        // Определение пороговых значений для условия isIntersecting
+        const updateIntersectingThreshold = () => {
+            if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+                setIsIntersectingThreshold({ top: 4, left: 10 });
+            } else if (window.innerWidth >= 1024 && window.innerWidth <= 1366) {
+                setIsIntersectingThreshold({ top: 5, left: 9 });
+            } else if (window.innerWidth >= 1366 && window.innerWidth <= 1920) {
+                setIsIntersectingThreshold({ top: 7, left: 8 });
+            }
+        };
+
+        // Установка начальных пороговых значений в соответствии с текущим размером окна
+        updateIntersectingThreshold();
+
+        // Обработчик изменения размера окна
+        const handleResize = () => {
+            updateIntersectingThreshold();
+        };
+
+        // Слушатель события изменения размера окна
+        window.addEventListener('resize', handleResize);
+
+        // Удаление слушателя после размонтирования компонента, чтобы избежать утечки памяти
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const maxAttemptsPerElement = 50;
+        const maxElements = searchResults.length;
         const maxAttempts = maxAttemptsPerElement * maxElements;
 
+        // Генерация уникальных позиции для элементов
         const generateUniquePositions = (maxAttempts) => {
             const newPositions = [];
             for (let i = 0; i < maxElements; i++) {
                 let attempts = 0;
                 let newPosition;
-                let isIntersecting; // Переменная isIntersecting должна быть объявлена здесь
+                let isIntersecting;
                 do {
                     newPosition = {
                         top: `${Math.random() * 90}%`,
                         left: `${Math.random() * 90}%`,
                     };
-                    // Проверяем, не пересекается ли новая позиция с уже существующими позициями
+                    // Сравнение абсолютных значений разницы с пороговыми значениями
                     isIntersecting = newPositions.some(({ top, left }) =>
-                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < 8 &&
-                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < 7
+                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < isIntersectingThreshold.top &&
+                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < isIntersectingThreshold.left
                     );
                     attempts++;
-                    // Если пересечение обнаружено и количество попыток не превышает максимальное количество, то продолжаем генерировать новые позиции
                 } while (isIntersecting && attempts < maxAttempts);
                 if (!isIntersecting) {
                     newPositions.push(newPosition);
@@ -66,7 +97,7 @@ export default function SearchingPage() {
 
         const initialPositions = generateUniquePositions(maxAttempts);
         setPositions(initialPositions);
-    }, [searchResults]);
+    }, [searchResults, isIntersectingThreshold]);
 
     const calculateContainerHeight = () => {
         const maxUsersPerPage = 20; // Максимальное количество пользователей на одной странице
