@@ -6,43 +6,36 @@ const UserRandomMain = () => {
   const companies = data.companies;
   const directions = data.directions;
 
+  const [selectedMembers, setSelectedMembers] = useState([]);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [selectedDirections, setSelectedDirections] = useState([]);
-  const [selectedMembers, setSelectedMembers] = useState([]);
 
   useEffect(() => {
-    const getRandomMembers = () => {
-      const selectedMembersArray = [];
-      const selectedIds = new Set();
+    const shuffledMembers = shuffleArray(members);
+    const selectedMembersArray = shuffledMembers.slice(0, 10);
 
-      while (selectedMembersArray.length < 10) {
-        const randomIndex = Math.floor(Math.random() * members.length);
-        const randomMember = members[randomIndex];
+    setSelectedMembers(selectedMembersArray);
 
-        if (selectedIds.has(randomMember.id)) {
-          continue;
-        }
+    const uniqueCompanies = new Set(selectedMembersArray.flatMap(member => member.companies.map(company => company.id)));
+    setSelectedCompanies(companies.filter(company => uniqueCompanies.has(company.id)));
 
-        selectedMembersArray.push(randomMember);
-        selectedIds.add(randomMember.id);
-      }
+    const uniqueDirections = new Set(selectedMembersArray.flatMap(member => member.directions.map(direction => direction.id)));
+    setSelectedDirections(directions.filter(direction => uniqueDirections.has(direction.id)));
+  }, []);
 
-      setSelectedMembers(selectedMembersArray);
-
-      const uniqueCompanies = Array.from(new Set(selectedMembersArray.flatMap(member => member.companies)));
-      setSelectedCompanies(uniqueCompanies);
-
-      const uniqueDirections = Array.from(new Set(selectedMembersArray.flatMap(member => member.directions.map(direction => direction.id))));
-      setSelectedDirections(uniqueDirections);
-    };
-
-    getRandomMembers();
-  }, [members]);
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
 
   return (
     <div>
       <div>
-        <h2>10 members:</h2>
+        <h2>Выбранные участники:</h2>
         {selectedMembers.map(member => (
           <div key={member.id}>
             <p>{member.firstName} {member.lastName}</p>
@@ -51,19 +44,17 @@ const UserRandomMain = () => {
       </div>
 
       <div>
-        <h2>Компании:</h2>
-        {selectedCompanies.map(companyId => {
-          const company = companies.find(company => company.id === companyId);
-          return <div key={company.id}>{company.name}</div>;
-        })}
+        <h2>Уникальные компании:</h2>
+        {selectedCompanies.map(company => (
+          <div key={company.id}>{company.name}</div>
+        ))}
       </div>
 
       <div>
-        <h2>Направления:</h2>
-        {selectedDirections.map(directionId => {
-          const direction = directions.find(direction => direction.id === directionId);
-          return <div key={direction.id}>{direction.name}</div>;
-        })}
+        <h2>Уникальные направления:</h2>
+        {selectedDirections.map(direction => (
+          <div key={direction.id}>{direction.name}</div>
+        ))}
       </div>
     </div>
   );
