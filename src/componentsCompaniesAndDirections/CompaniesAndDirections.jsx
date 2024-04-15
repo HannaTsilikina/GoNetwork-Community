@@ -24,10 +24,10 @@ const CompaniesAndDirections = () => {
         let filteredMembers = members;
         if (selectedCompany) {
 
-            filteredMembers = filteredMembers.filter(members => members.companies === selectedCompany);
+            filteredMembers = data.members.filter(members => members.companies.id === members.id &&  members.companies.status ===  'Работает');
         }
         if (selectedDirection) {
-            filteredMembers = filteredMembers.filter(member => member.directions.map(directions => directions.id));
+            filteredMembers = data.members.filter(member => member.directions.id === member.id);
         }
         return filteredMembers.map(member => (
             <div key={members.id}>
