@@ -1,73 +1,100 @@
-import React, { useState, useEffect } from 'react';
+iimport React, { useState, } from 'react';
 import data from '../../data.json';
 import './CompaniesAndDirections.scss';
 
 
 const CompaniesAndDirections = () => {
+    const [selectedCompanyId, setSelectedCompanyId] = useState();
+    const [selectedDirectionId, setselectedDirectionId] = useState();
 
 
-    const [companies, setCompanies] = useState([]);
-    const [directions, setDirections] = useState([]);
-    const [members, setMembers] = useState([]);
-    const [selectedCompany, setSelectedCompany] = useState(null);
-    const [selectedDirection, setSelectedDirection] = useState(null);
+    const CompanySelect = ({ companies, onChange }) => (
+        <select onChange={onChange}>
+            {companies.map((company) => (
+                <option key={company.id} value={company.id}>
+                    {company.name}
+                </option>
+            ))}
+        </select>
+    );
 
-    useEffect(() => {
+    const DirectionSelect = ({ directions, onChange}) => (
+<select onChange={onChange}>
+    {directions.map((direction) => (
+        <option key={direction.id} value={direction.id}>
+        {direction.name}
+    </option>
+    ))}
+</select>
+    );
 
-        setCompanies(data.companies);
-        setDirections(data.directions);
-        setMembers(data.members);
-
-    }, []);
-
-    const displayMembers = () => {
-        let filteredMembers = members;
-        if (selectedCompany) {
-
-            filteredMembers = data.members.filter(members => members.companies.id === members.id &&  members.companies.status ===  'Работает');
-        }
-        if (selectedDirection) {
-            filteredMembers = data.members.filter(member => member.directions.id === member.id);
-        }
-        return filteredMembers.map(member => (
-            <div key={members.id}>
-                <p> {member.firstName} {member.lastName}</p>
+    const MembersList = ({ members }) => {
+        return (
+            <div>
+                {members.map((member) => (
+                    <div key={member.id}>
+                        <p>
+                            {member.firstName} {member.lastName}
+                        </p>
+                    </div>
+                ))}
             </div>
-        ));
+        );
     };
+
+    const handleCompanyChange = (e) => {
+        setSelectedCompanyId(parseInt(e.target.value));
+    };
+
+    const handleDirectionChange = (e) => {
+        setselectedDirectionId(parseInt(e.target.value));
+    };
+
+    const filteredMembersCompany = data.members.filter(
+        (member) =>
+            !selectedCompanyId ||
+            member.companies.some(
+                (company) => company.id === selectedCompanyId && company.status === "Работает"
+            ));
+
+    const filteredMembersDirection = data.members.filter(
+        (member) =>
+            !selectedDirectionId ||
+            member.directions.some(
+                (direction) => direction.id === selectedDirectionId
+            ));
 
     return (
         <div>
-            <div>
-                <h2>Компания:</h2>
-                <select onChange={(e) => setSelectedCompany(e.target.value)}>
+            <div className='cad__container'>
+                <div>
+                    <h2>Компания:</h2>
                     <option value="">Выберите компанию</option>
-                    {companies.map(company => (
-                        <option key={company.id} value={company.name}>
-                            {company.name}
-                        </option>
-                    ))}
-                </select>
+                    <CompanySelect
+                        companies={data.companies}
+                        onChange={handleCompanyChange}/>
+                </div>
             </div>
 
             <div>
-                <h2>Направление:</h2>
-                <select onChange={(e) => setSelectedDirection(e.target.value)}>
-                    <option value="">Выберите направление</option>
-                    {directions.map(direction => (
-                        <option key={direction.id} value={direction.name}>
-                            {direction.name}
-                        </option>
-                    ))}
-                </select>
+            <h2>Направление:</h2> 
+            <option value="">Выберите направление</option>
+            <DirectionSelect
+        directions={data.directions}
+        onChange={handleDirectionChange}/>
+            </div>
+            
+            <div>
+                <h2>Работники Компании:</h2>
+                <MembersList members={filteredMembersCompany} />
             </div>
 
             <div>
-                <h2>Работники:</h2>
-                {displayMembers()}
+                <h2>Работники Направления:</h2>
+                <MembersList members={filteredMembersDirection} />
             </div>
         </div>
-    );
+    )
 
 };
 export default CompaniesAndDirections;
