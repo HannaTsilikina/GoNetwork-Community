@@ -3,7 +3,6 @@ import SearchingPage from './SearchingPage/SearchingPage';
 
 function App() {
   return <>
-    Hello world
     <SearchingPage />
   </>;
 }
