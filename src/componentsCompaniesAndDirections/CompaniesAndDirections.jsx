@@ -31,7 +31,7 @@ const CompaniesAndDirections = () => {
         }
         return filteredMembers.map(member => (
             <div key={members.id}>
-                <p> {member.lastName}</p>
+                <p> {member.firstName} {member.lastName}</p>
             </div>
         ));
     };
