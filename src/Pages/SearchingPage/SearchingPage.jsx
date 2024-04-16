@@ -7,7 +7,7 @@ export default function SearchingPage() {
     const [searchResults, setSearchResults] = useState([]);
     const [searchMessage, setSearchMessage] = useState('');
     const [positions, setPositions] = useState([]);
-    const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({ top: 7, left: 8 });
+    const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({ top: 0, left: 0 });
 
     useEffect(() => {
         if (searchTerm.length >= 3 && searchTerm.length <= 5) {
