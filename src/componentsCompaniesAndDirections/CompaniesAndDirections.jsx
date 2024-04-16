@@ -1,4 +1,4 @@
-iimport React, { useState, } from 'react';
+import React, { useState, } from 'react';
 import data from '../../data.json';
 import './CompaniesAndDirections.scss';
 
@@ -18,14 +18,14 @@ const CompaniesAndDirections = () => {
         </select>
     );
 
-    const DirectionSelect = ({ directions, onChange}) => (
-<select onChange={onChange}>
-    {directions.map((direction) => (
-        <option key={direction.id} value={direction.id}>
-        {direction.name}
-    </option>
-    ))}
-</select>
+    const DirectionSelect = ({ directions, onChange }) => (
+        <select onChange={onChange}>
+            {directions.map((direction) => (
+                <option key={direction.id} value={direction.id}>
+                    {direction.name}
+                </option>
+            ))}
+        </select>
     );
 
     const MembersList = ({ members }) => {
@@ -72,18 +72,18 @@ const CompaniesAndDirections = () => {
                     <option value="">Выберите компанию</option>
                     <CompanySelect
                         companies={data.companies}
-                        onChange={handleCompanyChange}/>
+                        onChange={handleCompanyChange} />
                 </div>
             </div>
 
             <div>
-            <h2>Направление:</h2> 
-            <option value="">Выберите направление</option>
-            <DirectionSelect
-        directions={data.directions}
-        onChange={handleDirectionChange}/>
+                <h2>Направление:</h2>
+                <option value="">Выберите направление</option>
+                <DirectionSelect
+                    directions={data.directions}
+                    onChange={handleDirectionChange} />
             </div>
-            
+
             <div>
                 <h2>Работники Компании:</h2>
                 <MembersList members={filteredMembersCompany} />
