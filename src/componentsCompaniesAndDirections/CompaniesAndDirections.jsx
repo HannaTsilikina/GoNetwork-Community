@@ -3,44 +3,45 @@ import data from '../../data.json';
 import './CompaniesAndDirections.scss';
 
 
-const CompaniesAndDirections = () => {
-    const [selectedCompanyId, setSelectedCompanyId] = useState();
-    const [selectedDirectionId, setselectedDirectionId] = useState();
+const CompanySelect = ({ companies, onChange }) => (
+    <select onChange={onChange}>
+        {companies.map((company) => (
+            <option key={company.id} value={company.id}>
+                {company.name}
+            </option>
+        ))}
+    </select>
+);
 
+const DirectionSelect = ({ directions, onChange }) => (
+    <select onChange={onChange}>
+        {directions.map((direction) => (
+            <option key={direction.id} value={direction.id}>
+                {direction.name}
+            </option>
+        ))}
+    </select>
+);
 
-    const CompanySelect = ({ companies, onChange }) => (
-        <select onChange={onChange}>
-            {companies.map((company) => (
-                <option key={company.id} value={company.id}>
-                    {company.name}
-                </option>
+const MembersList = ({ members }) => {
+    return (
+        <div>
+            {members.map((member) => (
+                <div key={member.id}>
+                    <p>
+                        {member.firstName} {member.lastName}
+                    </p>
+                </div>
             ))}
-        </select>
+        </div>
     );
+};
 
-    const DirectionSelect = ({ directions, onChange }) => (
-        <select onChange={onChange}>
-            {directions.map((direction) => (
-                <option key={direction.id} value={direction.id}>
-                    {direction.name}
-                </option>
-            ))}
-        </select>
-    );
+export default function CompaniesAndDirections() {
 
-    const MembersList = ({ members }) => {
-        return (
-            <div>
-                {members.map((member) => (
-                    <div key={member.id}>
-                        <p>
-                            {member.firstName} {member.lastName}
-                        </p>
-                    </div>
-                ))}
-            </div>
-        );
-    };
+    const [selectedCompanyId, setSelectedCompanyId] = useState(null);
+    const [selectedDirectionId, setselectedDirectionId] = useState(null);
+
 
     const handleCompanyChange = (e) => {
         setSelectedCompanyId(parseInt(e.target.value));
@@ -67,34 +68,33 @@ const CompaniesAndDirections = () => {
     return (
         <div>
             <div className='cad__container'>
-                <div>
+                <div className='cad__container-companies'>
                     <h2>Компания:</h2>
-                    <option value="">Выберите компанию</option>
-                    <CompanySelect
+                    <div className='CompanySelect'>
+                        <CompanySelect
                         companies={data.companies}
-                        onChange={handleCompanyChange} />
+                        onChange={handleCompanyChange} /></div>
                 </div>
-            </div>
 
-            <div>
-                <h2>Направление:</h2>
-                <option value="">Выберите направление</option>
-                <DirectionSelect
-                    directions={data.directions}
-                    onChange={handleDirectionChange} />
-            </div>
 
-            <div>
-                <h2>Работники Компании:</h2>
-                <MembersList members={filteredMembersCompany} />
-            </div>
+                <div className='cad__container-directions'>
+                    <h2>Направление:</h2>
+                    <DirectionSelect
+                        directions={data.directions}
+                        onChange={handleDirectionChange} />
+                </div>
+                <div className='cad__container-members-companies'>
+                    
+                    <MembersList members={filteredMembersCompany} />
 
-            <div>
-                <h2>Работники Направления:</h2>
-                <MembersList members={filteredMembersDirection} />
+                </div>
+
+               <div className='cad__container-members-directions'>
+                    
+                    <MembersList members={filteredMembersDirection} />
+                </div>
             </div>
         </div>
     )
 
 };
-export default CompaniesAndDirections;
