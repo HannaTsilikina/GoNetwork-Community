@@ -22,9 +22,20 @@ const MainDepartments = () => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let size = randomProperties(arrayOfSize);
+        let marginTop = `{randomIntFromInterval(0,20)}px`;
+        let marginBottom = `{randomIntFromInterval(0,20)}px`;
+        let marginLeft = `{randomIntFromInterval(0,20)}px`;
+        let marginRight = `{randomIntFromInterval(0,20)}px`;
+
         return (
           <Link className="mainscreen__company" key={index}>
             <div
+              style={{
+                marginTop: `${marginTop}`,
+                marginBottom: `${marginBottom}`,
+                marginLeft: `${marginLeft}`,
+                marginRight: `${marginRight}`,
+              }}
               className={`mainscreen__department ${position} ${color} ${size}`}
             >
               {item}
