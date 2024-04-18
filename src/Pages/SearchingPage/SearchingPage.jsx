@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import userData from '../../../WPT_data.json';
+import userData from '../../../data.json';
 import './SearchingPage.scss';
 
 export default function SearchingPage() {
