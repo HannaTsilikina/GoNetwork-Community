@@ -1,10 +1,7 @@
 import "../style/App.scss";
-import SearchingPage from './SearchingPage/SearchingPage';
 
 function App() {
-  return <>
-    <SearchingPage />
-  </>;
+  return <>Hello world </>;
 }
 
 export default App;
