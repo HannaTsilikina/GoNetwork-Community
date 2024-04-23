@@ -1,10 +1,15 @@
 import "../style/App.scss";
-import CompaniesAndDirections from '../componentsCompaniesAndDirections/CompaniesAndDirections';
+import CompaniesAndDirections from '../components/componentsCompaniesAndDirections/CompaniesAndDirections';
+
 
 function App() {
-  return <>
-    <CompaniesAndDirections />
-  </>;
+  return (
+    <>
+      <CompaniesAndDirections>
+
+      </CompaniesAndDirections>
+    </>
+  );
 }
 
 export default App;
