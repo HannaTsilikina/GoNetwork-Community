@@ -1,5 +1,5 @@
-@import '../../../../style/vars.scss';
-@import '../../../../style/App.scss';
+@import "../../../../style/vars.scss";
+@import "../../../../style/App.scss";
 
 .mainscreen-main__items {
   .mainscreen__professions {
@@ -33,11 +33,6 @@
     .mainscreen__profession {
       font-size: 0.75rem;
     }
-    .sizeNone {
-      height: 0px;
-      width: 0px;
-      display: none;
-    }
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -50,7 +45,7 @@
     display: grid;
     gap: 3vh;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 16vw;
+    grid-template-rows: repeat(10, 16vw);
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -64,7 +59,7 @@
     display: grid;
     gap: 3vh;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 13vw;
+    grid-template-rows: repeat(10, 13vw);
   }
 }
 
