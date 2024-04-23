@@ -1,21 +1,17 @@
-@import '../../../style/vars.scss';
-@import '../../../style/App.scss';
+@import "../../../style/vars.scss";
+@import "../../../style/App.scss";
 
 .mainscreen__main {
   height: auto;
   padding: 8vh 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 0vh;
   max-width: 98%;
   box-sizing: border-box;
 }
-.display {
-  display: none;
-  height: 0;
-  width: 0;
-}
+
 .position-left-end {
   justify-items: center;
   align-self: flex-end;
@@ -68,11 +64,6 @@
   background-color: rgb(203, 110, 211);
 }
 @media (width> 1920px) {
-  .sizeNone {
-    height: 0px;
-    width: 0px;
-    display: none;
-  }
   .sizeXXS {
     height: 5vw;
     width: 5vw;
@@ -112,16 +103,16 @@
     width: 6vw;
   }
   .sizeM {
-    height: 5vw;
-    width: 5vw;
-  }
-  .sizeL {
     height: 6.5vw;
     width: 6.5vw;
   }
+  .sizeL {
+    height: 8vw;
+    width: 8vw;
+  }
   .sizeXL {
-    height: 6.7vw;
-    width: 6.7vw;
+    height: 7.5vw;
+    width: 7.5vw;
   }
 }
 @media screen and (min-width: 1366px) and (max-width: 1560px) {
@@ -190,8 +181,8 @@
     width: 5.7vw;
   }
   .sizeM {
-    height: 6.5vw;
-    width: 6.5vw;
+    height: 6vw;
+    width: 6vw;
   }
   .sizeL {
     height: 7vw;

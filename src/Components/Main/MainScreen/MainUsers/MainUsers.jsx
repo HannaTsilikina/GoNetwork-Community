@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import './MainUsers.scss';
-import './../MainScreen.scss';
-import user from '../../../../assets/images/members/member.png';
-import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import "./MainUsers.scss";
+import "./../MainScreen.scss";
+import user from "../../../../assets/images/members/member.png";
+import { useState, useEffect } from "react";
 
 const arrayOfUsers = [
   user,
@@ -41,10 +41,10 @@ const MainUsers = ({ arrayOfMembers }) => {
       updateIntersectingThreshold();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -85,17 +85,17 @@ const MainUsers = ({ arrayOfMembers }) => {
   }, [isIntersectingThreshold]);
 
   return (
-    <div className='mainscreen-main__workers'>
+    <div className="mainscreen-main__workers">
       {arrayOfUsers.map((user, index) => (
         <Link
           key={index}
-          className='sp__container-result-users-user'
+          className="sp__container-result-users-user"
           style={{
-            top: positions[index] ? positions[index].top : '0%',
-            left: positions[index] ? positions[index].left : '0%',
+            top: positions[index] ? positions[index].top : "0%",
+            left: positions[index] ? positions[index].left : "0%",
           }}
         >
-          <img src={user} alt='image-user' />
+          <img src={user} alt="image-user" />
         </Link>
       ))}
     </div>
