@@ -4,8 +4,8 @@ import './CompaniesAndDirections.scss';
 
 
 const CompaniesAndDirections = () => {
-    const [selectedCompanyId, setSelectedCompanyId] = useState();
-    const [selectedDirectionId, setselectedDirectionId] = useState();
+    const [selectedCompanyId, setSelectedCompanyId] = useState(null);
+    const [selectedDirectionId, setselectedDirectionId] = useState(null);
 
 
     const CompanySelect = ({ companies, onChange }) => (
@@ -69,7 +69,7 @@ const CompaniesAndDirections = () => {
             <div className='cad__container'>
                 <div>
                     <h2>Компания:</h2>
-                    <option value="">Выберите компанию</option>
+                    <option value=" ">Выберите компанию</option>
                     <CompanySelect
                         companies={data.companies}
                         onChange={handleCompanyChange} />
@@ -78,7 +78,7 @@ const CompaniesAndDirections = () => {
 
             <div>
                 <h2>Направление:</h2>
-                <option value="">Выберите направление</option>
+                <option value=" ">Выберите направление</option>
                 <DirectionSelect
                     directions={data.directions}
                     onChange={handleDirectionChange} />
