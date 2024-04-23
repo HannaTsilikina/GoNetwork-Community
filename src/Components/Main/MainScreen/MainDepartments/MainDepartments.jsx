@@ -25,7 +25,6 @@ const MainDepartments = ({ arrayOfCompanies }) => {
         let marginBottom = `${randomIntFromInterval(0, 20)}px`;
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
-
         if (item.length === 0) {
           display = 'display';
           size = 'sizeNone';
