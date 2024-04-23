@@ -1,8 +1,9 @@
-import MainDepartments from "./MainDepartments/MainDepartments";
-import MainProfessions from "./MainProfessions/MainProfessions";
-import "./MainScreen.scss";
-import MainUsers from "./MainUsers/MainUsers";
-import data from "../../../../data.json";
+import MainDepartments from './MainDepartments/MainDepartments';
+import MainProfessions from './MainProfessions/MainProfessions';
+import './MainScreen.scss';
+import MainUsers from './MainUsers/MainUsers';
+import data from '../../../../data.json';
+import { randomIntFromInterval } from '../../../helpers/commonFunctions';
 
 const MainScreen = () => {
   const members = data.members;
@@ -32,6 +33,26 @@ const MainScreen = () => {
       if (data.companies.id === uniqueCompaniesID.value) return company.name;
     }
   });
+
+  let uniqueCompaniesPositions = [];
+  for (let i = 0; i < uniqueCompanies.length; i++) {
+    if (
+      i === 2 ||
+      i === 4 ||
+      i === 7 ||
+      i === 9 ||
+      i === 13 ||
+      i === 15 ||
+      i === 19
+    ) {
+      uniqueCompaniesPositions = [...uniqueCompaniesPositions, ''];
+    }
+    uniqueCompaniesPositions = [
+      ...uniqueCompaniesPositions,
+      uniqueCompanies[i],
+    ];
+  }
+
   const uniqueDirectionsID = new Set(
     selectedMembers.flatMap((member) =>
       member.directions.map((direction) => direction.id)
@@ -44,11 +65,30 @@ const MainScreen = () => {
     }
   });
 
+  let uniqueDirectionsPositions = [];
+  for (let i = 0; i < uniqueDirections.length; i++) {
+    if (
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20) ||
+      i === randomIntFromInterval(0, 20)
+    ) {
+      uniqueDirectionsPositions = [...uniqueDirectionsPositions, ''];
+    }
+    uniqueDirectionsPositions = [
+      ...uniqueDirectionsPositions,
+      uniqueDirections[i],
+    ];
+  }
+
   return (
-    <main className="mainscreen__main">
-      <MainDepartments arrayOfCompanies={uniqueCompanies} />
+    <main className='mainscreen__main'>
+      <MainDepartments arrayOfCompanies={uniqueCompaniesPositions} />
       <MainUsers arrayOfMembers={selectedMembersID} />
-      <MainProfessions arrayOfProfessions={uniqueDirections} />
+      <MainProfessions arrayOfProfessions={uniqueDirectionsPositions} />
     </main>
   );
 };

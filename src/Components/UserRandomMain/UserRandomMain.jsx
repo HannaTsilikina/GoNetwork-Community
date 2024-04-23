@@ -16,18 +16,33 @@ const UserRandomMain = () => {
 
     setSelectedMembers(selectedMembersArray);
 
-    const uniqueCompanies = new Set(selectedMembersArray.flatMap(member => member.companies.map(company => company.id)));
-    setSelectedCompanies(companies.filter(company => uniqueCompanies.has(company.id)));
+    const uniqueCompanies = new Set(
+      selectedMembersArray.flatMap((member) =>
+        member.companies.map((company) => company.id)
+      )
+    );
+    setSelectedCompanies(
+      companies.filter((company) => uniqueCompanies.has(company.id))
+    );
 
-    const uniqueDirections = new Set(selectedMembersArray.flatMap(member => member.directions.map(direction => direction.id)));
-    setSelectedDirections(directions.filter(direction => uniqueDirections.has(direction.id)));
+    const uniqueDirections = new Set(
+      selectedMembersArray.flatMap((member) =>
+        member.directions.map((direction) => direction.id)
+      )
+    );
+    setSelectedDirections(
+      directions.filter((direction) => uniqueDirections.has(direction.id))
+    );
   }, []);
 
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
     }
     return shuffledArray;
   };
@@ -36,23 +51,25 @@ const UserRandomMain = () => {
     <div>
       <div>
         <h2>Выбранные участники:</h2>
-        {selectedMembers.map(member => (
+        {selectedMembers.map((member) => (
           <div key={member.id}>
-            <p>{member.firstName} {member.lastName}</p>
+            <p>
+              {member.firstName} {member.lastName}
+            </p>
           </div>
         ))}
       </div>
 
       <div>
         <h2>Уникальные компании:</h2>
-        {selectedCompanies.map(company => (
+        {selectedCompanies.map((company) => (
           <div key={company.id}>{company.name}</div>
         ))}
       </div>
 
       <div>
         <h2>Уникальные направления:</h2>
-        {selectedDirections.map(direction => (
+        {selectedDirections.map((direction) => (
           <div key={direction.id}>{direction.name}</div>
         ))}
       </div>
