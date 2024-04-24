@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import data from '../../../data.json';
 import './CompaniesAndDirections.scss';
 import Members from '../members/Members';
@@ -7,38 +7,33 @@ import UniversalComponent from '../UniversalComponent/UniversalComponent';
 
 
 function CompaniesAndDirections() {
-    const filteredMembersCompany =
-        data.members.filter(member => {
-            if (member.companies.id === data.companies.id) {
-                return member
-            } else if (member.directions.id === data.directions.id) {
-                return member
-            }
 
-        })
 
-    const title = ({ dataType }) => {
-        // json файл содержит объект с ключами 'companies' и 'directions'
-        const { companies, directions } = data;
 
-        let dataToShow;
-
-        // Определяем, какие данные нужно отобразить в зависимости от входного параметра
-        if (dataType === 'company') {
-            dataToShow = companies;
-        } else if (dataType === 'direction') {
-            dataToShow = directions;
-        } else {
-            return <div>Неправильный тип данных</div>;
-        }
-    }
+    /* const title = ({ dataType }) => {
+         // json файл содержит объект с ключами 'companies' и 'directions'
+         const { companies, directions } = data;
+ 
+         let dataToShow;
+ 
+         // Определяем, какие данные нужно отобразить в зависимости от входного параметра
+         if (dataType === 'company') {
+             dataToShow = companies;
+         } else if (dataType === 'direction') {
+             dataToShow = directions;
+         } else {
+             return <div>Неправильный тип данных</div>;
+         }
+     }*/
 
 
     return (
         <div className='cad-container'>
-            <div className='cad-title'>{title}</div>
+            <div className='cad-title'>
+                <h1>Название</h1>
+            </div>
             <div className='cad-members'>
-                {filteredMembersCompany.map((member) =>
+                {data.members.map((member) =>
                     <div key={member.id}>
                         <Members lastName={member.lastName}
                             firstName={member.firstName}

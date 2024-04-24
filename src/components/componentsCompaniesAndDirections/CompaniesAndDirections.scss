@@ -1,6 +1,23 @@
 @import '../../style/vars.scss';
 @import "../../style/App.scss";
 
+.cad-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5vh;
+}
+
+.cad-members {
+    display: grid;
+    grid-column-start: 2;
+    align-items: center;
+}
+
+.cad-title {
+    display: flex;
+    align-items: center;
+}
+
 /*
 .cad__container {
     display: grid;
