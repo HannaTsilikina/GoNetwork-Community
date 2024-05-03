@@ -54,7 +54,7 @@ function CompanyPage({ companyName, membersData }) {
                 const dx = pos[0] - x;
                 const dy = pos[1] - y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                return distance < 20; // Расстояние между кружочками
+                return distance < 15; // Расстояние между кружочками
             });
         } while (isIntersecting);
 
