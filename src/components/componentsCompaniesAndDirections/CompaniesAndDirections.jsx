@@ -60,7 +60,7 @@ function CompanyPage({ companyName, membersData }) {
 
         positions.push([x, y]);
 
-        const size = Math.floor(Math.random() * 51) + 50;
+        const size = Math.floor(Math.random() * 60) + 50;
         const color = colors[i % colors.length];
 
         circles.push(<div key={i} style={{ width: `${size}px`, height: `${size}px`, background: color, borderRadius: '50%', position: 'absolute', top: `${y}vh`, left: `${x}vw`, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
