@@ -14,9 +14,12 @@
 }
 
 .cad-title {
-    display: flex;
+    display: grid;
+    grid-column-start: 1;
     align-items: center;
 }
+
+
 
 /*
 .cad__container {

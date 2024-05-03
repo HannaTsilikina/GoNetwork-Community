@@ -1,11 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import data from '../../../data.json';
 import '../UniversalComponent/UniversalComponent.scss';
 
 
-const UniversalComponent = ({ filterBy }) => {
-    const [filteredMembers, setFilteredMembers] = useState([]);
+function UniversalComponent(props) {
+
+
+    return (
+        <div className='all-title'>
+            <div className='title-name'> {props.name}</div>
+        </div>
+    )
+
+}
+
+export default UniversalComponent;
+
+
+
+
+/*  <h1>{dataType === 'company' ? 'Компании' : 'Направления'}</h1>
+            <ul>
+                {dataToShow.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>`*/
+
+
+
+/*
+ const [filteredMembers, setFilteredMembers] = useState([]);
 
     useEffect(() => {
         if (filterBy) {
@@ -27,28 +51,13 @@ const UniversalComponent = ({ filterBy }) => {
                 ))}
             </ul>
         </div>
-    );
-};
+    );*/
 
 
-export default UniversalComponent;
-
-
-
-
-/*  <h1>{dataType === 'company' ? 'Компании' : 'Направления'}</h1>
-            <ul>
-                {dataToShow.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>`*/
-
-
-
-/*
-  return (
-<div className='title'>
-<div className='title-name'>{props.name}</div>
-<div className='title-id'>{props.id}</div>
-</div>
-);*/
+/* return (
+     <div className='all-item'>
+         <div className='item-name'>{props.name}</div>
+         <div className='item-id'>{props.id}</div>
+ 
+     </div>
+ )*/
