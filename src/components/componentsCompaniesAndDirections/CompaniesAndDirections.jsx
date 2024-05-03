@@ -38,7 +38,7 @@ function CompanyPage({ companyName, membersData }) {
     const colors = ["#CB6ED3", "#DE99E4", "#FBDAFE", "#EBC2EF"];
 
     // Создаем кружочек для компании
-    circles.push(<div key="company" style={{ width: '200px', height: '200px', background: 'blue', borderRadius: '50%' }}>{companyName}</div>);
+    circles.push(<div key="company" style={{ width: '200px', height: '200px', background: 'blue', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{companyName}</div>);
 
     // Создаем кружочки для каждого сотрудника
     membersData.forEach((member, i) => {
@@ -63,7 +63,7 @@ function CompanyPage({ companyName, membersData }) {
         const size = Math.floor(Math.random() * 51) + 50;
         const color = colors[i % colors.length];
 
-        circles.push(<div key={i} style={{ width: `${size}px`, height: `${size}px`, background: color, borderRadius: '50%', position: 'absolute', top: `${y}vh`, left: `${x}vw` }}>
+        circles.push(<div key={i} style={{ width: `${size}px`, height: `${size}px`, background: color, borderRadius: '50%', position: 'absolute', top: `${y}vh`, left: `${x}vw`, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {member.name}
         </div>);
     });
