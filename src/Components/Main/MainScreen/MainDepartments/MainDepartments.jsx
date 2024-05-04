@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./../MainScreen.scss";
 import "./MainDepartments.scss";
 import randomProperties from "../../../../helpers/RandomPosition";
@@ -49,7 +49,7 @@ const MainDepartments = ({ arrayOfCompanies }) => {
           size = "sizeXL";
         }
         return (
-          <Link className="mainscreen__company" key={index}>
+          <NavLink className="mainscreen__company" key={index}>
             <div
               className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
               style={{
@@ -61,7 +61,7 @@ const MainDepartments = ({ arrayOfCompanies }) => {
             >
               {item}
             </div>
-          </Link>
+          </NavLink>
         );
       })}
     </div>

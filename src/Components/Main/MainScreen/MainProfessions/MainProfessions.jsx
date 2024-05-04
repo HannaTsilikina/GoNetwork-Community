@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./../MainScreen.scss";
 import "./MainProfessions.scss";
 import randomProperties from "../../../../helpers/RandomPosition";
@@ -49,7 +49,7 @@ const MainProfessions = ({ arrayOfProfessions }) => {
           size = "sizeXL";
         }
         return (
-          <Link className="mainscreen__professions" key={index}>
+          <NavLink className="mainscreen__professions" key={index}>
             <div
               className={`mainscreen__profession ${position} ${color} ${size}`}
               style={{
@@ -61,7 +61,7 @@ const MainProfessions = ({ arrayOfProfessions }) => {
             >
               {item}
             </div>
-          </Link>
+          </NavLink>
         );
       })}
     </div>
