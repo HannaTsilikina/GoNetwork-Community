@@ -16,21 +16,21 @@ const Header = () => {
         </div>
       </Link>
       <nav className="header__nav">
-        <NavLink>
+        <NavLink to="/companies">
           <div className="header-nav__item >">
             <span className="header-nav__text">Компании</span>
             <div className="header-nav__background"> </div>
           </div>
         </NavLink>
-        <NavLink>
+        <NavLink to="/directions">
           <div className="header-nav__item >">
             <span className="header-nav__text">Темы</span>
             <div className="header-nav__background"> </div>
           </div>
         </NavLink>
-        <NavLink>
+        <NavLink to="/search">
           <div className="header-nav__item >">
-            <span className="header-nav__text">Коммуникации</span>
+            <span className="header-nav__text">Поиск</span>
             <div className="header-nav__background"> </div>
           </div>
         </NavLink>
