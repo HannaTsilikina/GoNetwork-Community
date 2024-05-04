@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import "./../MainScreen.scss";
-import "./MainProfessions.scss";
-import randomProperties from "../../../../helpers/RandomPosition";
-import { randomIntFromInterval } from "../../../../helpers/commonFunctions";
+import "../../../Pages/Main/MainScreen.scss";
+import "./MainDepartments.scss";
+import randomProperties from "../../../helpers/RandomPosition";
+import { randomIntFromInterval } from "../../../helpers/commonFunctions";
 
 const arrayOfPosition = [
   "position-left-start",
@@ -11,13 +11,12 @@ const arrayOfPosition = [
   "position-right-end",
   "position-right-start",
 ];
+const arrayOfColors = ["violet300", "violet400", "violet500"];
 
-const arrayOfColors = ["pink100", "pink200", "pink400", "pink500"];
-
-const MainProfessions = ({ arrayOfProfessions }) => {
+const MainDepartments = ({ arrayOfCompanies }) => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfProfessions.map((item, index) => {
+      {arrayOfCompanies.map((item, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -26,6 +25,7 @@ const MainProfessions = ({ arrayOfProfessions }) => {
         let marginBottom = `${randomIntFromInterval(0, 20)}px`;
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
+
         if (item.length === 0) {
           display = "display";
           size = "sizeNone";
@@ -33,25 +33,25 @@ const MainProfessions = ({ arrayOfProfessions }) => {
         if (item.length > 2) {
           size = "sizeXXS";
         }
-        if (item.length > 7) {
+        if (item.length > 5) {
           size = "sizeXS";
         }
-        if (item.length > 9) {
+        if (item.length > 7) {
           size = "sizeS";
         }
-        if (item.length > 11) {
+        if (item.length > 10) {
           size = "sizeM";
         }
-        if (item.length > 12) {
+        if (item.length > 14) {
           size = "sizeL";
         }
         if (item.length > 18) {
           size = "sizeXL";
         }
         return (
-          <NavLink className="mainscreen__professions" key={index}>
+          <NavLink className="mainscreen__company" key={index}>
             <div
-              className={`mainscreen__profession ${position} ${color} ${size}`}
+              className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
               style={{
                 marginTop: `${marginTop}`,
                 marginBottom: `${marginBottom}`,
@@ -67,4 +67,4 @@ const MainProfessions = ({ arrayOfProfessions }) => {
     </div>
   );
 };
-export default MainProfessions;
+export default MainDepartments;

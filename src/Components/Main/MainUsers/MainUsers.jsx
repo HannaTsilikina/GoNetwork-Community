@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./MainUsers.scss";
-import "./../MainScreen.scss";
+import "../../../Pages/Main/MainScreen.scss";
 import { useState, useEffect } from "react";
-import data from "../../../../../data.json";
+import data from "../../../../data.json";
 
 const arrayOfUsers = data.members;
 
