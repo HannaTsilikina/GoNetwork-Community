@@ -1,6 +1,6 @@
 import "./CompanyPage.scss";
 import data from "../../../data.json";
-import MainDepartments from "../../Components/Main/MainScreen/MainDepartments/MainDepartments";
+import Departments from "../../Components/Departments/Departments";
 import { randomIntFromInterval } from "../../helpers/commonFunctions";
 
 const CompanyPage = () => {
@@ -50,11 +50,9 @@ const CompanyPage = () => {
     ];
   }
 
-  
-
   return (
     <main className="mainscreen__main">
-      <MainDepartments arrayOfCompanies={uniqueCompaniesPositions} />
+      <Departments arrayOfCompanies={uniqueCompaniesPositions} />
     </main>
   );
 };
