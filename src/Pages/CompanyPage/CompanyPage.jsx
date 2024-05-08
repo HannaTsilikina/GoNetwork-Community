@@ -51,7 +51,7 @@ const CompanyPage = () => {
   }
 
   return (
-    <main className="mainscreen__main">
+    <main className="company__main">
       <Departments arrayOfCompanies={uniqueCompaniesPositions} />
     </main>
   );
