@@ -2,6 +2,7 @@ import "../style/App.scss";
 import Header from "../Components/Header/Header";
 import MainScreen from "../Components/Main/MainScreen/MainScreen";
 import SearchingPage from '../Pages/SearchingPage/SearchingPage';
+import CompanyPage from '../Pages/CompanyPage/CompanyPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<MainScreen />} />
                 <Route path='/search' element={<SearchingPage />} />
+                <Route path='/companies' element={<CompanyPage />} />
+
             </Routes>
         </Router>
     );
