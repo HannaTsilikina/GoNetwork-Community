@@ -1,9 +1,15 @@
 import "./CompanyPage.scss";
+import "../SearchingPage/SearchingPage.scss"
 import data from "../../../data.json";
 import Departments from "../../Components/Departments/Departments";
 import { randomIntFromInterval } from "../../helpers/commonFunctions";
+// import Search from "../../Components/Search/Search";
+import { useState, useMemo } from 'react';
 
 const CompanyPage = () => {
+
+  const [searchTerm, setSearchTerm] = useState('');
+
   const members = data.members;
 
   const shuffleArray = (array) => {
@@ -50,9 +56,28 @@ const CompanyPage = () => {
     ];
   }
 
+  const filteredCompanies = useMemo(() => uniqueCompaniesPositions.filter((name) => name.toLowerCase().includes(searchTerm.toLowerCase())))
+  const handleSearchInputChange = (event) => {
+    const inputText = event.target.value;
+    setSearchTerm(inputText);
+}
+  
   return (
     <main className="company__main">
-      <Departments arrayOfCompanies={uniqueCompaniesPositions} />
+      <div className="sp__container">
+      <div className='sp__container-input'>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchInputChange}
+        placeholder='Введите имя'
+      /><span></span>
+      </div>
+      </div>
+      <div className="sp__container-result">
+      {filteredCompanies.length === 0 ? <p>Не найдено</p> : null}
+      </div>
+      <Departments arrayOfCompanies={filteredCompanies} />
     </main>
   );
 };

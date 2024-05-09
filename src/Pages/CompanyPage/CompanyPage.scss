@@ -3,9 +3,7 @@
 
 .company__main {
   height: auto;
-  padding: 8vh 0;
-  display: block;
-  justify-content: space-between;
+  display: grid;
   align-items: flex-start;
   gap: 0vh;
   max-width: 98%;
