@@ -1,0 +1,20 @@
+@import "../../style/vars.scss";
+@import "../../style/App.scss";
+
+.companiesAndDirections__container {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.companiesAndDirections__users {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

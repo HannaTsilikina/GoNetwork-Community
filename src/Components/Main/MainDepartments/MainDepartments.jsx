@@ -49,7 +49,7 @@ const MainDepartments = ({ arrayOfCompanies }) => {
           size = "sizeXL";
         }
         return (
-          <NavLink className="mainscreen__company" key={index}>
+          <NavLink className="mainscreen__company" key={index} to="/companies">
             <div
               className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
               style={{

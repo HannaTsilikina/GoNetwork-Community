@@ -49,7 +49,11 @@ const MainProfessions = ({ arrayOfProfessions }) => {
           size = "sizeXL";
         }
         return (
-          <NavLink className="mainscreen__professions" key={index}>
+          <NavLink
+            className="mainscreen__professions"
+            to="/companies"
+            key={index}
+          >
             <div
               className={`mainscreen__profession ${position} ${color} ${size}`}
               style={{
