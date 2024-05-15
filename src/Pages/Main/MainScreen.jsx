@@ -1,9 +1,9 @@
-import MainDepartments from "./MainDepartments/MainDepartments";
-import MainProfessions from "./MainProfessions/MainProfessions";
+import data from "../../../data.json";
+import MainDepartments from "../../Components/Main/MainDepartments/MainDepartments";
+import MainProfessions from "../../Components/Main/MainProfessions/MainProfessions";
+import MainUsers from "../../Components/Main/MainUsers/MainUsers";
+import { randomIntFromInterval } from "../../helpers/commonFunctions";
 import "./MainScreen.scss";
-import MainUsers from "./MainUsers/MainUsers";
-import data from "../../../../data.json";
-import { randomIntFromInterval } from "../../../helpers/commonFunctions";
 
 const MainScreen = () => {
   const members = data.members;
