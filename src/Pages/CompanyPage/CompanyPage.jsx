@@ -31,11 +31,10 @@ const CompanyPage = () => {
       member.companies.map((company) => company.id)
     )
   );
-  const uniqueCompanies = data.companies.map((company) => {
-    {
-      if (data.companies.id === uniqueCompaniesID.value) return company.name;
-    }
-  });
+  const uniqueCompanies = data.companies
+  .filter((company) => uniqueCompaniesID.has(company.id))
+  .map((company) => ({ id: company.id, name: company.name }));
+  
 
   let uniqueCompaniesPositions = [];
   for (let i = 0; i < uniqueCompanies.length; i++) {
@@ -56,7 +55,14 @@ const CompanyPage = () => {
     ];
   }
 
-  const filteredCompanies = useMemo(() => uniqueCompaniesPositions.filter((name) => name.toLowerCase().includes(searchTerm.toLowerCase())))
+  const filteredCompanies = useMemo(() => uniqueCompaniesPositions.filter((company) => {
+    if (typeof company === 'object') {
+      return company.name.toLowerCase().includes(searchTerm.toLowerCase())
+    }
+    return true
+    })
+  )
+  
   const handleSearchInputChange = (event) => {
     const inputText = event.target.value;
     setSearchTerm(inputText);
@@ -65,14 +71,14 @@ const CompanyPage = () => {
   return (
     <main className="company__main">
       <div className="sp__container">
-      <div className='sp__container-input'>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleSearchInputChange}
-        placeholder='Введите имя'
-      /><span></span>
-      </div>
+        <div className='sp__container-input'>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchInputChange}
+            placeholder='Введите имя'
+          /><span></span>
+        </div>
       </div>
       <div className="sp__container-result">
       {filteredCompanies.length === 0 ? <p>Не найдено</p> : null}

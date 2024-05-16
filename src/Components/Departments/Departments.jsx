@@ -14,9 +14,10 @@ const arrayOfPosition = [
 const arrayOfColors = ["violet300", "violet400", "violet500"];
 
 const Departments = ({ arrayOfCompanies }) => {
+
   return (
     <div className="departments__items">
-      {arrayOfCompanies.map((item, index) => {
+      {arrayOfCompanies.map((company, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -26,30 +27,33 @@ const Departments = ({ arrayOfCompanies }) => {
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
 
-        if (item.length === 0) {
-          display = "display";
-          size = "sizeNone";
-        }
-        if (item.length > 2) {
-          size = "sizeXXS";
-        }
-        if (item.length > 5) {
-          size = "sizeXS";
-        }
-        if (item.length > 7) {
-          size = "sizeS";
-        }
-        if (item.length > 10) {
-          size = "sizeM";
-        }
-        if (item.length > 14) {
-          size = "sizeL";
-        }
-        if (item.length > 18) {
-          size = "sizeXL";
-        }
+        
+        if (company && company.name) {
+          const companyName = company.name
+           
+          if (companyName.length > 2) {
+            size = "sizeXXS";
+          }
+          if (companyName.length > 5) {
+            size = "sizeXS";
+          }
+          if (companyName.length > 7) {
+            size = "sizeS";
+          }
+          if (companyName.length > 10) {
+            size = "sizeM";
+          }
+          if (companyName.length > 14) {
+            size = "sizeL";
+          }
+          if (companyName.length > 18) {
+            size = "sizeXL";
+          }
+        
+        
         return (
-          <Link className="mainscreen__company" key={index}>
+          <div className={`mainscreen__item ${position}`} key={index}>
+          <Link className="mainscreen__company" >
             <div
               className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
               style={{
@@ -59,10 +63,18 @@ const Departments = ({ arrayOfCompanies }) => {
                 marginRight: `${marginRight}`,
               }}
             >
-              {item}
+              {companyName}
             </div>
           </Link>
+          </div>
         );
+      } else {
+        return (
+          <div className={`mainscreen__item ${position}`} key={index}>
+            <div className={`mainscreen__department ${position} empty`} />
+          </div>
+        );
+      }
       })}
     </div>
   );

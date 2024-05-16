@@ -6,8 +6,9 @@
   display: grid;
   align-items: flex-start;
   gap: 0vh;
-  max-width: 98%;
+  max-width: 100%;
   box-sizing: border-box;
+  margin: auto;
 }
 
 .display {
@@ -199,5 +200,58 @@
   .sizeXL {
     height: 9vw;
     width: 9vw;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  .sizeXXS {
+    height: 10vw;
+    width: 10vw;
+  }
+  .sizeXS {
+    height: 12vw;
+    width: 12vw;
+  }
+  .sizeS {
+    height: 14vw;
+    width: 14vw;
+  }
+  .sizeM {
+    height: 15vw;
+    width: 15vw;
+  }
+  .sizeL {
+    height: 18vw;
+    width: 18vw;
+  }
+  .sizeXL {
+    height: 20vw;
+    width: 20vw;
+  }
+ 
+}
+@media screen and (max-width: 500px) {
+  .sizeXXS {
+    height: 10vw;
+    width: 10vw;
+  }
+  .sizeXS {
+    height: 12vw;
+    width: 12vw;
+  }
+  .sizeS {
+    height: 14vw;
+    width: 14vw;
+  }
+  .sizeM {
+    height: 15vw;
+    width: 15vw;
+  }
+  .sizeL {
+    height: 16vw;
+    width: 16vw;
+  }
+  .sizeXL {
+    height: 17vw;
+    width: 17vw;
   }
 }
