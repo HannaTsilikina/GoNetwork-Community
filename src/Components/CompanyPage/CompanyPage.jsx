@@ -1,32 +1,13 @@
 import "./CompanyPage.scss";
 import "../../style/vars.scss";
+import { generatePosition } from "../../helpers/commonFunctions";
 
 export default function CompanyPage({ members }) {
   const positions = [];
-
-  // Генерируем кружочек, пока он не пересечется с другими кружочками
-  function generatePosition() {
-    let x, y;
-    let isIntersecting;
-    do {
-      x = Math.random() * 90;
-      y = Math.random() * 50;
-
-      isIntersecting = positions.some((pos) => {
-        const dx = pos[0] - x;
-        const dy = pos[1] - y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < 15; // Расстояние между кружочками
-      });
-    } while (isIntersecting);
-    positions.push([x, y]);
-    return [x, y];
-  }
-
   return (
     <div className="companiesAndDirections__users">
       {members.map((member, index) => {
-        let position = generatePosition();
+        let position = generatePosition(positions, 50);
         return (
           <div
             key={index}
