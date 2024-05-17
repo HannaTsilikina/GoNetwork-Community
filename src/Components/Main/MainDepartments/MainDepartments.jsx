@@ -24,7 +24,7 @@ const findId = (companyName) => {
 const MainDepartments = ({ arrayOfCompaniesPositions, handleCompanyClick }) => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfCompaniesPositions.map((company) => {
+      {arrayOfCompaniesPositions.map((company, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -60,8 +60,7 @@ const MainDepartments = ({ arrayOfCompaniesPositions, handleCompanyClick }) => {
 
         return (
           <NavLink
-            key={id}
-            onClick={() => handleCompanyClick(company.split("/")[0])}
+            key={index}
             className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
             style={{ marginTop, marginBottom, marginLeft, marginRight }}
             to={`/companies/${id}`}

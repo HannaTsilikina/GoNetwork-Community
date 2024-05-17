@@ -4,27 +4,10 @@ import "../../style/vars.scss";
 import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import DataProvider from "../../Components/DataProvider/DataProvider";
 import data from "../../../data.json";
+import { findCompany, findMembers } from "../../helpers/findUsers";
 
 function Companies() {
   const { id } = useParams();
-
-  const findCompany = (array, idOfComp) => {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].id === +idOfComp) return array[i];
-    }
-  };
-  const findMembers = (array, idOfComp) => {
-    const members = [];
-    for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array[i].companies.length; j++) {
-        console.log(array[i].companies[j].id, +idOfComp);
-        if (array[i].companies[j].id === +idOfComp) {
-          members.push(array[i]);
-        }
-      }
-    }
-    return members;
-  };
 
   const selectedCompany = findCompany(data.companies, id);
   if (!selectedCompany) {
@@ -32,7 +15,6 @@ function Companies() {
     return <div>Компания не найдена</div>;
   }
   const membersWorkingInCompany = findMembers(data.members, id);
-  console.log(membersWorkingInCompany);
 
   return (
     <DataProvider data={data}>
@@ -48,7 +30,7 @@ function Companies() {
               {selectedCompany.name}
             </div>
             {membersWorkingInCompany.map((member) => {
-              return <div>{member.firstName}</div>;
+              return <div key={member.id}>{member.firstName}</div>;
             })}
             <CompanyPage members={membersWorkingInCompany} />
           </main>
