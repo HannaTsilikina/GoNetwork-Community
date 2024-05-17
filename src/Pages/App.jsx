@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./../components/Header/Header";
+import Header from "../Components/Header/Header";
 import SearchingPage from "./../Pages/SearchingPage/SearchingPage";
 import "./../style/App.scss";
 import CompaniesAndDirections from "../Pages/CompaniesAndDirections/CompaniesAndDirections";
@@ -13,10 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/search" element={<SearchingPage />} />
-        <Route
-          path="/companies"
-          element={<CompaniesAndDirections companyName="СибГеоТоп" />}
-        />
+        <Route path="/companies/:companyId" element={<CompaniesAndDirections />} />
       </Routes>
     </Router>
   );

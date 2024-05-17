@@ -13,10 +13,10 @@ const arrayOfPosition = [
 ];
 const arrayOfColors = ["violet300", "violet400", "violet500"];
 
-const MainDepartments = ({ arrayOfCompanies }) => {
+const MainDepartments = ({ arrayOfCompanies, handleCompanyClick }) => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfCompanies.map((item, index) => {
+      {arrayOfCompanies.map((companyId, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -26,45 +26,43 @@ const MainDepartments = ({ arrayOfCompanies }) => {
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
 
-        if (item.length === 0) {
+        if (companyId.length === 0) {
           display = "display";
           size = "sizeNone";
         }
-        if (item.length > 2) {
+        if (companyId.length > 2) {
           size = "sizeXXS";
         }
-        if (item.length > 5) {
+        if (companyId.length > 5) {
           size = "sizeXS";
         }
-        if (item.length > 7) {
+        if (companyId.length > 7) {
           size = "sizeS";
         }
-        if (item.length > 10) {
+        if (companyId.length > 10) {
           size = "sizeM";
         }
-        if (item.length > 14) {
+        if (companyId.length > 14) {
           size = "sizeL";
         }
-        if (item.length > 18) {
+        if (companyId.length > 18) {
           size = "sizeXL";
         }
+
         return (
-          <NavLink className="mainscreen__company" key={index} to="/companies">
-            <div
-              className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
-              style={{
-                marginTop: `${marginTop}`,
-                marginBottom: `${marginBottom}`,
-                marginLeft: `${marginLeft}`,
-                marginRight: `${marginRight}`,
-              }}
-            >
-              {item}
-            </div>
-          </NavLink>
+          <NavLink 
+  key={index}
+  onClick={() => handleCompanyClick(companyId.split('/')[0])}
+  className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
+  style={{ marginTop, marginBottom, marginLeft, marginRight }}
+  to={`/companies/${companyId.split('/')[0]}`}
+>
+  {companyId.split('/')[0]}
+</NavLink>
         );
       })}
     </div>
   );
 };
+
 export default MainDepartments;

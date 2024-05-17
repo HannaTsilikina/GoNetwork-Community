@@ -1,31 +1,36 @@
+import { useState } from "react";
 import "./CompanyPage.scss";
 import "../../style/vars.scss";
 
-export default function CompanyPage({ members }) {
-  const positions = [];
+export default function CompanyPage({ company }) {
+  const [positions, setPositions] = useState([]);
 
-  // Генерируем кружочек, пока он не пересечется с другими кружочками
   function generatePosition() {
-    let x, y;
-    let isIntersecting;
-    do {
-      x = Math.random() * 90;
-      y = Math.random() * 50;
+    setPositions((prevPositions) => {
+      let x, y;
+      let isIntersecting;
 
-      isIntersecting = positions.some((pos) => {
-        const dx = pos[0] - x;
-        const dy = pos[1] - y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < 15; // Расстояние между кружочками
-      });
-    } while (isIntersecting);
-    positions.push([x, y]);
+      do {
+        x = Math.random() * 90;
+        y = Math.random() * 50;
+
+        isIntersecting = prevPositions.some((pos) => {
+          const dx = pos[0] - x;
+          const dy = pos[1] - y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          return distance < 15;
+        });
+      } while (isIntersecting);
+
+      return [...prevPositions, [x, y]];
+    });
+
     return [x, y];
   }
 
   return (
     <div className="companiesAndDirections__users">
-      {members.map((member, index) => {
+      {company && company.members.map((member, index) => {
         let position = generatePosition();
         return (
           <div
