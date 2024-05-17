@@ -1,24 +1,25 @@
 import { useParams } from "react-router-dom";
-import "./CompaniesAndDirections.scss";
+import "./Directions.scss";
 import "../../style/vars.scss";
 import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import DataProvider from "../../Components/DataProvider/DataProvider";
-import data from "../../../data.json"
-
+import data from "../../../data.json";
 
 function CompaniesAndDirections() {
-  const { companyId, directionId } = useParams();
+  const { id } = useParams();
 
-  const selectedCompany = data.companies.find((company) => company.id === companyId);
+  const selectedDirection = data.companies.find((company) => company.id === id);
 
-  if (!selectedCompany) {
-    console.log("Company not found for id:", companyId);
+  if (!selectedDirection) {
+    console.log("Company not found for id:", id);
     return <div>Компания не найдена</div>;
   }
 
   const membersWorkingInCompany = data.members.filter((member) =>
-    member.companies.some((company) => company.id === companyId && company.status === "Работает")
-);
+    member.companies.some(
+      (company) => company.id === id && company.status === "Работает"
+    )
+  );
 
   return (
     <DataProvider data={data}>
@@ -27,11 +28,14 @@ function CompaniesAndDirections() {
 
         return (
           <main className="companiesAndDirections__container">
-            <div className="companiesAndDirections__main" key={selectedCompany.id}>
+            <div
+              className="companiesAndDirections__main"
+              key={selectedCompany.id}
+            >
               {selectedCompany.name}
             </div>
 
-            {directionId && <div>Выбранное направление: {directionId}</div>}
+            {id && <div>Выбранное направление: {id}</div>}
 
             <CompanyPage members={membersWorkingInCompany} />
           </main>

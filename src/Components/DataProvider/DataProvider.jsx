@@ -17,7 +17,7 @@ const DataProvider = ({ children }) => {
     if (selectedCompany) {
       const companyMembers = data.members.filter((member) => {
         return member.companies.some(
-          (company) => company.id === selectedCompany
+          (company) => company.id === selectedCompany.id
         );
       });
 

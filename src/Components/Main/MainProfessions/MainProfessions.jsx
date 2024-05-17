@@ -52,23 +52,23 @@ const MainProfessions = ({ arrayOfProfessions, handleDirectionClick }) => {
 
         return (
           <NavLink
-  className="mainscreen__professions"
-  to={`/companies/${companyId.split('/')[0]}/${professionId}`}
-  key={index}
->
-  <div
-    className={`mainscreen__profession ${position} ${color} ${size}`}
-    style={{
-      marginTop: marginTop,
-      marginBottom: marginBottom,
-      marginLeft: marginLeft,
-      marginRight: marginRight,
-    }}
-    onClick={() => handleDirectionClick(professionId)}
-  >
-    {professionId}
-  </div>
-</NavLink>
+            className="mainscreen__professions"
+            to={`/professions/${professionId}`}
+            key={index}
+          >
+            <div
+              className={`mainscreen__profession ${position} ${color} ${size}`}
+              style={{
+                marginTop: marginTop,
+                marginBottom: marginBottom,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
+              }}
+              onClick={() => handleDirectionClick(professionId)}
+            >
+              {professionId}
+            </div>
+          </NavLink>
         );
       })}
     </div>
