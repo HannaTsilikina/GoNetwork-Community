@@ -1,7 +1,7 @@
 import data from "../../../data.json";
-import MainDepartments from "../../components/Main/MainDepartments/MainDepartments";
-import MainProfessions from "../../components/Main/MainProfessions/MainProfessions";
-import MainUsers from "../../components/Main/MainUsers/MainUsers";
+import MainDepartments from "../../Components/Main/MainDepartments/MainDepartments";
+import MainProfessions from "../../Components/Main/MainProfessions/MainProfessions";
+import MainUsers from "../../Components/Main/MainUsers/MainUsers";
 import { randomIntFromInterval } from "../../helpers/commonFunctions";
 import "./MainScreen.scss";
 

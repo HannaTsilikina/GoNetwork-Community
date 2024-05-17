@@ -1,7 +1,7 @@
 import "./CompaniesAndDirections.scss";
 import "../../style/vars.scss";
-import "../../components/CompanyPage/CompanyPage";
-import CompanyPage from "../../components/CompanyPage/CompanyPage";
+import "../../Components/CompanyPage/CompanyPage";
+import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import data from "../../../data.json";
 
 function Company_Directions_Page({ companyName }) {
