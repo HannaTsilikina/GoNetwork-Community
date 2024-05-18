@@ -29,9 +29,6 @@ function Companies() {
             >
               {selectedCompany.name}
             </div>
-            {membersWorkingInCompany.map((member) => {
-              return <div key={member.id}>{member.firstName}</div>;
-            })}
             <CompanyPage members={membersWorkingInCompany} />
           </main>
         );
