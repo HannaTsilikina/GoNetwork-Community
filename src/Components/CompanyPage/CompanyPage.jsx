@@ -1,8 +1,18 @@
 import "./CompanyPage.scss";
 import "../../style/vars.scss";
 import { generatePosition } from "../../helpers/commonFunctions";
+import UserComponent from "../UserComponent/UserComponent";
+import { useState } from "react";
 
 export default function CompanyPage({ members }) {
+  const [activeUser, setActiveUser] = useState(null);
+  const handleUserHoverEnter = (userName) => {
+    setActiveUser(userName);
+  };
+
+  const handleUserHoverLeave = () => {
+    setActiveUser(null);
+  };
   const positions = [];
   return (
     <div className="companiesAndDirections__users">
@@ -11,6 +21,7 @@ export default function CompanyPage({ members }) {
         return (
           <div
             key={index}
+            className="sp__container-result-users-user-wrapper"
             style={{
               position: "absolute",
               top: `${position[1]}vh`,
@@ -20,10 +31,7 @@ export default function CompanyPage({ members }) {
               alignItems: "center",
             }}
           >
-            <img
-              src={member.photo}
-              alt={`${member.firstName} ${member.lastName}`}
-            />
+            <UserComponent user={member} />
           </div>
         );
       })}

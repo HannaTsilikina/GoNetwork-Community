@@ -1,140 +1,164 @@
-import { useState, useEffect } from 'react';
-import userData from '../../../data.json';
-import './SearchingPage.scss';
+import { useState, useEffect, useMemo } from "react";
+import userData from "../../../data.json";
+import "./SearchingPage.scss";
+import UserComponent from "../../Components/UserComponent/UserComponent";
+import generateUniquePositions from "../../helpers/generateUniquePositions.js";
 
 export default function SearchingPage() {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-    const [searchMessage, setSearchMessage] = useState('');
-    const [positions, setPositions] = useState([]);
-    const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({ top: 0, left: 0 });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchMessage, setSearchMessage] = useState("");
+  const [positions, setPositions] = useState([]);
+  const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({
+    top: 0,
+    left: 0,
+  });
+  const [activeUser, setActiveUser] = useState(null);
 
-    useEffect(() => {
-        if (searchTerm.length >= 3 && searchTerm.length <= 5) {
-            const filteredUsers = userData.members.filter((user) =>
-                (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || user.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
-            );
-            setSearchResults(filteredUsers);
-            setSearchMessage('');
-        } else {
-            const filteredUsers = userData.members.filter((user) =>
-                (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || user.lastName.toLowerCase().includes(searchTerm.toLowerCase()))
-            );
-            setSearchResults(filteredUsers);
-            if (searchTerm.length > 5 && filteredUsers.length === 0) {
-                setSearchMessage('Пользователь не найден');
-            } else {
-                setSearchMessage('');
-            }
-        }
-    }, [searchTerm]);
+  const users = useMemo(() => userData.members, []);
 
-    const handleSearchInputChange = (event) => {
-        const inputText = event.target.value;
-        setSearchTerm(inputText);
+  useEffect(() => {
+    if (searchTerm.length >= 3 && searchTerm.length <= 5) {
+      const filteredUsers = users.filter(
+        (user) =>
+          user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filteredUsers);
+      setSearchMessage("");
+    } else {
+      const filteredUsers = users.filter(
+        (user) =>
+          user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filteredUsers);
+      if (searchTerm.length > 5 && filteredUsers.length === 0) {
+        setSearchMessage("Пользователь не найден");
+      } else {
+        setSearchMessage("");
+      }
     }
+  }, [searchTerm]);
 
-    // Динамическое обновление пороговых значений в зависимости от изменений размера окна для адаптации условий пересечения позиций для разных размеров экрана.
-    useEffect(() => {
-        // Определение пороговых значений для условия isIntersecting
-        const updateIntersectingThreshold = () => {
-            if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-                setIsIntersectingThreshold({ top: 4, left: 10 });
-            } else if (window.innerWidth >= 1024 && window.innerWidth <= 1366) {
-                setIsIntersectingThreshold({ top: 5, left: 9 });
-            } else if (window.innerWidth >= 1366 && window.innerWidth <= 1920) {
-                setIsIntersectingThreshold({ top: 7, left: 8 });
-            }
-        };
-
-        // Установка начальных пороговых значений в соответствии с текущим размером окна
-        updateIntersectingThreshold();
-
-        // Обработчик изменения размера окна
-        const handleResize = () => {
-            updateIntersectingThreshold();
-        };
-
-        // Слушатель события изменения размера окна
-        window.addEventListener('resize', handleResize);
-
-        // Удаление слушателя после размонтирования компонента, чтобы избежать утечки памяти
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        const maxAttemptsPerElement = 50;
-        const maxElements = searchResults.length;
-        const maxAttempts = maxAttemptsPerElement * maxElements;
-
-        // Генерация уникальных позиции для элементов
-        const generateUniquePositions = (maxAttempts) => {
-            const newPositions = [];
-            for (let i = 0; i < maxElements; i++) {
-                let attempts = 0;
-                let newPosition;
-                let isIntersecting;
-                do {
-                    newPosition = {
-                        top: `${Math.random() * 90}%`,
-                        left: `${Math.random() * 90}%`,
-                    };
-                    // Сравнение абсолютных значений разницы с пороговыми значениями
-                    isIntersecting = newPositions.some(({ top, left }) =>
-                        Math.abs(parseFloat(top) - parseFloat(newPosition.top)) < isIntersectingThreshold.top &&
-                        Math.abs(parseFloat(left) - parseFloat(newPosition.left)) < isIntersectingThreshold.left
-                    );
-                    attempts++;
-                } while (isIntersecting && attempts < maxAttempts);
-                if (!isIntersecting) {
-                    newPositions.push(newPosition);
-                }
-            }
-            return newPositions;
-        };
-
-        const initialPositions = generateUniquePositions(maxAttempts);
-        setPositions(initialPositions);
-    }, [searchResults, isIntersectingThreshold]);
-
-    const calculateContainerHeight = () => {
-        const maxUsersPerPage = 20; // Максимальное количество пользователей на одной странице
-        const usersPerPage = Math.min(maxUsersPerPage, searchResults.length); // Количество пользователей на странице
-        const estimatedHeight = usersPerPage * (77.86 + 9); // Предполагаемая высота контейнера в пикселях
-        return estimatedHeight;
+  useEffect(() => {
+    const updateIntersectingThreshold = () => {
+      const windowWidth = window.innerWidth;
+      let newThreshold;
+      if (windowWidth >= 768 && windowWidth < 1024) {
+        newThreshold = { top: 10, left: 12 };
+      } else if (windowWidth >= 1024 && windowWidth <= 1366) {
+        newThreshold = { top: 13, left: 10 };
+      } else if (windowWidth >= 1366 && windowWidth <= 1920) {
+        newThreshold = { top: 11, left: 10 };
+      } else if (windowWidth > 1920) {
+        newThreshold = { top: 15, left: 10 };
+      }
+      setIsIntersectingThreshold(newThreshold);
     };
 
-    return (
-        <div className='sp__container'>
-            <div className='sp__container-input'>
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={handleSearchInputChange}
-                    placeholder='Введите имя'
-                /><span></span>
-            </div>
-            <div className='sp__container-result'>
-                {searchMessage && (<p>{searchMessage}</p>)}
-                {searchResults.length > 0 && (
-                    <div className='sp__container-result-users' style={{ height: `${calculateContainerHeight()}px` }}>
-                        {searchResults.map((user, index) => (
-                            <div
-                                key={user.id}
-                                className="sp__container-result-users-user"
-                                style={{
-                                    top: positions[index] ? positions[index].top : '0%',
-                                    left: positions[index] ? positions[index].left : '0%',
-                                }}
-                            >
-                                {user.firstName} {user.lastName}
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div >
-    )
+    updateIntersectingThreshold();
+
+    const handleResize = () => {
+      updateIntersectingThreshold();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setPositions(generateUniquePositions(isIntersectingThreshold, users));
+  }, [users, isIntersectingThreshold]);
+
+  const handleSearchInputChange = (event) => {
+    const inputText = event.target.value;
+    setSearchTerm(inputText);
+  };
+
+  const calculateContainerHeight = (users) => {
+    let baseHeight = 5; // Начальная высота контейнера в em
+    let perAdditionalUserHeight = 0.5; // Дополнительная высота за каждого дополнительного пользователя
+
+    if (users.length <= 10) {
+      return `${baseHeight}em`;
+    } else if (users.length > 120) {
+      return `${baseHeight + 15}em`; // Максимальная высота для 120 пользователей
+    } else {
+      let additionalUsers = users.length - 10;
+      let additionalHeight = additionalUsers * perAdditionalUserHeight;
+      return `calc(${baseHeight}em + ${additionalHeight}em)`;
+    }
+  };
+
+  const calculateContainerWidth = (users) => {
+    let baseWidth = 10; // Начальная ширина контейнера в em
+    let perAdditionalUserWidth = 0.5; // Дополнительная ширина за каждого дополнительного пользователя
+
+    if (users.length <= 10) {
+      return `${baseWidth}em`;
+    } else if (users.length > 120) {
+      return `${baseWidth + 10}em`; // Максимальная ширина для 120 пользователей
+    } else {
+      let additionalUsers = users.length - 10;
+      let additionalWidth = additionalUsers * perAdditionalUserWidth;
+      return `calc(${baseWidth}em + ${additionalWidth}em)`;
+    }
+  };
+
+  const handleUserHoverEnter = (userName) => {
+    setActiveUser(userName);
+  };
+
+  const handleUserHoverLeave = () => {
+    setActiveUser(null);
+  };
+
+  return (
+    <div className="sp__container">
+      <div className="sp__container-input">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchInputChange}
+          placeholder="Введите имя"
+        />
+        <span></span>
+      </div>
+      <div className="sp__container-result">
+        {searchMessage && <p>{searchMessage}</p>}
+        {searchResults.length > 0 && (
+          <div
+            className="sp__container-result-users"
+            // style={{
+            //   height: calculateContainerHeight(users),
+            //   width: calculateContainerWidth(users),
+            // }}
+          >
+            {searchResults.map((user, index) => (
+              <div
+                key={user.id}
+                className="sp__container-result-users-user-wrapper"
+                style={{
+                  top: positions[index] ? positions[index].top : "0%",
+                  left: positions[index] ? positions[index].left : "0%",
+                }}
+              >
+                <UserComponent
+                  user={user}
+                  className="sp__container-result-users-user"
+                  onUserHoverEnter={handleUserHoverEnter}
+                  onUserHoverLeave={handleUserHoverLeave}
+                  isActive={activeUser === `${user.firstName} ${user.lastName}`}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

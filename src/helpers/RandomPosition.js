@@ -1,4 +1,4 @@
-import { randomIntFromInterval } from "../helpers/commonFunctions";
+import { randomIntFromInterval } from "./commonFunctions";
 
 const randomProperties = (arrayWithRandomProperties) => {
   const index = randomIntFromInterval(0, arrayWithRandomProperties.length - 1);
