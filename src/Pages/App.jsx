@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./../Components/Header/Header";
 import SearchingPage from "./../Pages/SearchingPage/SearchingPage";
 import "./../style/App.scss";
-import CompaniesAndDirections from "../Pages/CompaniesAndDirections/CompaniesAndDirections";
-
+import Companies from "./Companies/Companies";
+import Directions from "./Directions/Directions";
 import MainScreen from "./Main/MainScreen";
 
 function App() {
@@ -13,10 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/search" element={<SearchingPage />} />
-        <Route
-          path="/companies"
-          element={<CompaniesAndDirections companyName="СибГеоТоп" />}
-        />
+        <Route path="/companies/:id" element={<Companies />} />
+        <Route path="/professions/:id" element={<Directions />} />
       </Routes>
     </Router>
   );

@@ -14,10 +14,10 @@ const arrayOfPosition = [
 
 const arrayOfColors = ["pink100", "pink200", "pink400", "pink500"];
 
-const MainProfessions = ({ arrayOfProfessions }) => {
+const MainProfessions = ({ arrayOfProfessions, handleDirectionClick }) => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfProfessions.map((item, index) => {
+      {arrayOfProfessions.map((professionId, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -26,44 +26,47 @@ const MainProfessions = ({ arrayOfProfessions }) => {
         let marginBottom = `${randomIntFromInterval(0, 20)}px`;
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
-        if (item.length === 0) {
+
+        if (professionId.length === 0) {
           display = "display";
           size = "sizeNone";
         }
-        if (item.length > 2) {
+        if (professionId.length > 2) {
           size = "sizeXXS";
         }
-        if (item.length > 7) {
+        if (professionId.length > 7) {
           size = "sizeXS";
         }
-        if (item.length > 9) {
+        if (professionId.length > 9) {
           size = "sizeS";
         }
-        if (item.length > 11) {
+        if (professionId.length > 11) {
           size = "sizeM";
         }
-        if (item.length > 12) {
+        if (professionId.length > 12) {
           size = "sizeL";
         }
-        if (item.length > 18) {
+        if (professionId.length > 18) {
           size = "sizeXL";
         }
+
         return (
           <NavLink
             className="mainscreen__professions"
-            to="/companies"
+            to={`/professions/${professionId}`}
             key={index}
           >
             <div
               className={`mainscreen__profession ${position} ${color} ${size}`}
               style={{
-                marginTop: `${marginTop}`,
-                marginBottom: `${marginBottom}`,
-                marginLeft: `${marginLeft}`,
-                marginRight: `${marginRight}`,
+                marginTop: marginTop,
+                marginBottom: marginBottom,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
               }}
+              onClick={() => handleDirectionClick(professionId)}
             >
-              {item}
+              {professionId}
             </div>
           </NavLink>
         );
@@ -71,4 +74,5 @@ const MainProfessions = ({ arrayOfProfessions }) => {
     </div>
   );
 };
+
 export default MainProfessions;
