@@ -7,7 +7,7 @@ export default function CompanyPage({ members }) {
   return (
     <div className="companiesAndDirections__users">
       {members.map((member, index) => {
-        let position = generatePosition(positions, 50);
+        let position = generatePosition(positions, 40);
         return (
           <div
             key={index}
