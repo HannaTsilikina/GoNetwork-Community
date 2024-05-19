@@ -4,22 +4,19 @@ import "../../style/vars.scss";
 import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import DataProvider from "../../Components/DataProvider/DataProvider";
 import data from "../../../data.json";
+import { findCompany, findMembers } from "../../helpers/findUsers";
 
-function CompaniesAndDirections() {
+function Directions() {
   const { id } = useParams();
 
-  const selectedDirection = data.companies.find((company) => company.id === id);
+  const selectedDirection = findCompany(data.directions, id);
 
   if (!selectedDirection) {
     console.log("Company not found for id:", id);
-    return <div>Компания не найдена</div>;
+    return <div>Направление не найдено</div>;
   }
 
-  const membersWorkingInCompany = data.members.filter((member) =>
-    member.companies.some(
-      (company) => company.id === id && company.status === "Работает"
-    )
-  );
+  const membersWorkingInCompany = findMembers(data.members, id);
 
   return (
     <DataProvider data={data}>
@@ -30,12 +27,10 @@ function CompaniesAndDirections() {
           <main className="companiesAndDirections__container">
             <div
               className="companiesAndDirections__main"
-              key={selectedCompany.id}
+              key={selectedDirection.id}
             >
-              {selectedCompany.name}
+              {selectedDirection.name}
             </div>
-
-            {id && <div>Выбранное направление: {id}</div>}
 
             <CompanyPage members={membersWorkingInCompany} />
           </main>
@@ -45,4 +40,4 @@ function CompaniesAndDirections() {
   );
 }
 
-export default CompaniesAndDirections;
+export default Directions;
