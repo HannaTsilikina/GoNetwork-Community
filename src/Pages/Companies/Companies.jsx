@@ -4,7 +4,7 @@ import "../../style/vars.scss";
 import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import DataProvider from "../../Components/DataProvider/DataProvider";
 import data from "../../../data.json";
-import { findCompany, findMembers } from "../../helpers/findUsers";
+import { findCompany, findMembersInCompany } from "../../helpers/findUsers";
 
 function Companies() {
   const { id } = useParams();
@@ -14,7 +14,7 @@ function Companies() {
     console.log("Company not found for id:", id);
     return <div>Компания не найдена</div>;
   }
-  const membersWorkingInCompany = findMembers(data.members, id);
+  const membersWorkingInCompany = findMembersInCompany(data.members, id);
 
   return (
     <DataProvider data={data}>

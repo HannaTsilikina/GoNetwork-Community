@@ -3,7 +3,7 @@ const findCompany = (array, idOfComp) => {
     if (array[i].id === +idOfComp) return array[i];
   }
 };
-const findMembers = (array, idOfComp) => {
+const findMembersInCompany = (array, idOfComp) => {
   const members = [];
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].companies.length; j++) {
@@ -14,4 +14,15 @@ const findMembers = (array, idOfComp) => {
   }
   return members;
 };
-export { findMembers, findCompany };
+const findMembersInDirection = (array, idOfComp) => {
+  const members = [];
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].directions.length; j++) {
+      if (array[i].directions[j].id === +idOfComp) {
+        members.push(array[i]);
+      }
+    }
+  }
+  return members;
+};
+export { findMembersInCompany, findCompany, findMembersInDirection };

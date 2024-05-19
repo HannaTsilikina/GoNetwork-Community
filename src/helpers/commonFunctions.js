@@ -6,7 +6,7 @@ const generatePosition = (arrayofPositions, height) => {
   let x, y;
   let isIntersecting;
   do {
-    x = Math.random() * 80;
+    x = Math.random() * 70;
     y = Math.random() * height;
 
     isIntersecting = arrayofPositions.some((pos) => {

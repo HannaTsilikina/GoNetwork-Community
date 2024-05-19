@@ -4,7 +4,7 @@ import "../../style/vars.scss";
 import CompanyPage from "../../Components/CompanyPage/CompanyPage";
 import DataProvider from "../../Components/DataProvider/DataProvider";
 import data from "../../../data.json";
-import { findCompany, findMembers } from "../../helpers/findUsers";
+import { findCompany, findMembersInDirection } from "../../helpers/findUsers";
 
 function Directions() {
   const { id } = useParams();
@@ -12,11 +12,11 @@ function Directions() {
   const selectedDirection = findCompany(data.directions, id);
 
   if (!selectedDirection) {
-    console.log("Company not found for id:", id);
+    console.log("Direction not found for id:", id);
     return <div>Направление не найдено</div>;
   }
 
-  const membersWorkingInCompany = findMembers(data.members, id);
+  const membersWorkingInCompany = findMembersInDirection(data.members, id);
 
   return (
     <DataProvider data={data}>
