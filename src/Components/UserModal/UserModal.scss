@@ -1,71 +1,71 @@
-@import "../../style/vars.scss";
+@import '../../style/vars.scss';
 
 .user-modal {
-  z-index: 5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index         : 5;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 100%;
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
   background-color: rgba(0, 0, 0, 0.2);
-  font-family: $fontFamily;
+  font-family     : $fontFamily;
 
   .popup__user-container {
-    position: absolute;
+    position        : absolute;
     background-color: #ffffff;
-    overflow: auto;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
+    overflow        : auto;
+    box-shadow      : 0px 0px 6px 0px rgba(0, 0, 0, 0.25);
     background-color: rgb(255, 255, 255);
 
     .user-container__info {
       position: relative;
-      display: flex;
+      display : flex;
 
       .user-container__info-photo {
-        position: relative;
+        position     : relative;
         border-radius: 50%;
-        border: 2px solid $peachColor;
-        border-color: $peachColor;
+        border       : 2px solid $peachColor;
+        border-color : $peachColor;
 
         img {
-          width: 100%;
-          object-fit: cover;
+          width        : 100%;
+          object-fit   : cover;
           border-radius: 50%;
         }
       }
 
       .user-container__info-background {
         position: absolute;
-        z-index: 0;
+        z-index : 0;
 
         img {
-          width: 100%;
+          width     : 100%;
           object-fit: cover;
         }
       }
 
       .user-container__info-text {
-        z-index: 0;
-        flex: 1;
-        display: flex;
+        z-index       : 0;
+        flex          : 1;
+        display       : flex;
         flex-direction: column;
 
         h3 {
           margin: 0;
-          color: $violetColor;
+          color : $violetColor;
         }
 
         p {
           margin: 0;
-          color: $greyColorDark;
+          color : $greyColorDark;
         }
       }
 
       .user-container__info-socials {
-        display: grid;
+        display      : grid;
         grid-template: repeat(4, 1fr) / repeat(4, 1fr);
 
         a {
@@ -75,7 +75,7 @@
     }
 
     .user-container__category {
-      display: flex;
+      display        : flex;
       justify-content: space-between;
 
       h3 {
@@ -89,9 +89,9 @@
       .user-container__category-companies,
       .user-container__category-directions,
       .user-container__category-skills {
-        height: 100%;
-        display: flex;
-        flex: 1;
+        height        : 100%;
+        display       : flex;
+        flex          : 1;
         flex-direction: column;
       }
 
@@ -110,31 +110,31 @@
       .companies,
       .directions,
       .skills {
-        width: 100%;
-        display: flex;
+        width    : 100%;
+        display  : flex;
         flex-wrap: wrap;
 
         .p-style__companies,
         .p-style__directions,
         .p-style__skills {
-          width: auto;
-          height: auto;
+          width  : auto;
+          height : auto;
           display: inline-block;
         }
 
         .p-style__companies {
           background-color: $violetColorCompanies;
-          color: $whiteColor;
+          color           : $whiteColor;
         }
 
         .p-style__directions {
           background-color: $lilacColorDirections;
-          color: $greyColorDark;
+          color           : $greyColorDark;
         }
 
         .p-style__skills {
           background-color: $peachColorSkills;
-          color: $greyColorDark;
+          color           : $greyColorDark;
         }
       }
     }
@@ -142,25 +142,26 @@
 
   @media screen and (min-width: 1920px) {
     .popup__user-container {
-      width: 40vw;
-      max-height: 70vh;
-      top: 27%;
+      width        : 40vw;
+      max-height   : 70vh;
+      top          : 27%;
       border-radius: 50px;
-      padding: 50px;
+      padding      : 50px;
 
       .user-container__info {
+
         .user-container__info-photo {
-          width: 100px;
-          height: 100px;
+          width       : 100px;
+          height      : 100px;
           margin-right: 30px;
-          padding: 6px;
-          border: 3px solid $peachColor;
+          padding     : 6px;
+          border      : 3px solid $peachColor;
         }
 
         .user-container__info-background {
-          top: -62px;
-          left: -50px;
-          width: 700px;
+          top   : -62px;
+          left  : -50px;
+          width : 700px;
           height: 160px;
 
           img {
@@ -173,14 +174,14 @@
 
           h3 {
             padding-top: 7px;
-            font-size: 28px;
+            font-size  : 28px;
             font-weight: 600;
             line-height: 32px;
           }
 
           p {
             padding-top: 7px;
-            font-size: 20px;
+            font-size  : 20px;
             font-weight: 500;
             line-height: 20px;
           }
@@ -188,7 +189,7 @@
 
         .user-container__info-socials {
           margin-left: 5px;
-          gap: 15px;
+          gap        : 15px;
         }
       }
 
@@ -196,8 +197,8 @@
         gap: 40px;
 
         h3 {
-          margin: 0 0 16px 0;
-          font-size: 24px;
+          margin     : 0 0 16px 0;
+          font-size  : 24px;
           font-weight: 600;
           line-height: 32px;
         }
@@ -205,7 +206,7 @@
         .user-container__category-companies,
         .user-container__category-directions,
         .user-container__category-skills {
-          padding: 20px;
+          padding      : 20px;
           border-radius: 25px;
         }
 
@@ -217,39 +218,40 @@
           .p-style__companies,
           .p-style__directions,
           .p-style__skills {
-            row-gap: 18px;
-            padding: 15px;
+            row-gap      : 18px;
+            padding      : 15px;
             border-radius: 13px;
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 20px;
+            font-size    : 20px;
+            font-weight  : 400;
+            line-height  : 20px;
           }
         }
       }
     }
   }
 
-  @media screen and (min-width: 1366px) and (max-width: 1920px) {
+  @media screen and (min-width:1366px) and (max-width:1920px) {
     .popup__user-container {
-      width: 800px;
-      max-height: 60vh;
-      top: 27%;
+      width        : 800px;
+      max-height   : 60vh;
+      top          : 27%;
       border-radius: 20px;
-      padding: 30px;
+      padding      : 30px;
 
       .user-container__info {
+
         .user-container__info-photo {
-          width: 90px;
-          height: 90px;
+          width       : 90px;
+          height      : 90px;
           margin-right: 30px;
-          padding: 4px;
-          border: 2px solid $peachColor;
+          padding     : 4px;
+          border      : 2px solid $peachColor;
         }
 
         .user-container__info-background {
-          top: -32px;
-          left: -30px;
-          width: 625px;
+          top   : -32px;
+          left  : -30px;
+          width : 625px;
           height: 140px;
         }
 
@@ -258,14 +260,14 @@
 
           h3 {
             padding-top: 5px;
-            font-size: 20px;
+            font-size  : 20px;
             font-weight: 600;
             line-height: 24px;
           }
 
           p {
             padding-top: 7px;
-            font-size: 16px;
+            font-size  : 16px;
             font-weight: 500;
             line-height: 20px;
           }
@@ -273,7 +275,7 @@
 
         .user-container__info-socials {
           margin-left: 5px;
-          gap: 10px;
+          gap        : 10px;
         }
       }
 
@@ -281,8 +283,8 @@
         gap: 30px;
 
         h3 {
-          margin: 0 0 16px 0;
-          font-size: 20px;
+          margin     : 0 0 16px 0;
+          font-size  : 20px;
           font-weight: 500;
           line-height: 24px;
         }
@@ -290,7 +292,7 @@
         .user-container__category-companies,
         .user-container__category-directions,
         .user-container__category-skills {
-          padding: 10px;
+          padding      : 10px;
           border-radius: 10px;
         }
 
@@ -302,39 +304,40 @@
           .p-style__companies,
           .p-style__directions,
           .p-style__skills {
-            row-gap: 16px;
-            padding: 5px;
+            row-gap      : 16px;
+            padding      : 5px;
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 20px;
+            font-size    : 16px;
+            font-weight  : 400;
+            line-height  : 20px;
           }
         }
       }
     }
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1366px) {
+  @media screen and (min-width:1024px) and (max-width:1366px) {
     .popup__user-container {
-      width: 650px;
-      max-height: 50vh;
-      top: 27%;
+      width        : 650px;
+      max-height   : 50vh;
+      top          : 27%;
       border-radius: 17px;
-      padding: 25px;
+      padding      : 25px;
 
       .user-container__info {
+
         .user-container__info-photo {
-          width: 75px;
-          height: 75px;
+          width       : 75px;
+          height      : 75px;
           margin-right: 20px;
-          padding: 3px;
-          border: 2px solid $peachColor;
+          padding     : 3px;
+          border      : 2px solid $peachColor;
         }
 
         .user-container__info-background {
-          top: -44px;
-          left: -37px;
-          width: 600px;
+          top   : -44px;
+          left  : -37px;
+          width : 600px;
           height: 140px;
         }
 
@@ -343,14 +346,14 @@
 
           h3 {
             padding-top: 5px;
-            font-size: 18px;
+            font-size  : 18px;
             font-weight: 500;
             line-height: 22px;
           }
 
           p {
             padding-top: 5px;
-            font-size: 14px;
+            font-size  : 14px;
             font-weight: 400;
             line-height: 20px;
           }
@@ -358,7 +361,7 @@
 
         .user-container__info-socials {
           margin-left: 5px;
-          gap: 3px;
+          gap        : 3px;
         }
       }
 
@@ -366,8 +369,8 @@
         gap: 25px;
 
         h3 {
-          margin: 0 0 8px 0;
-          font-size: 18px;
+          margin     : 0 0 8px 0;
+          font-size  : 18px;
           font-weight: 500;
           line-height: 22px;
         }
@@ -375,7 +378,7 @@
         .user-container__category-companies,
         .user-container__category-directions,
         .user-container__category-skills {
-          padding: 8px;
+          padding      : 8px;
           border-radius: 8px;
         }
 
@@ -387,39 +390,40 @@
           .p-style__companies,
           .p-style__directions,
           .p-style__skills {
-            row-gap: 10px;
-            padding: 5px;
+            row-gap      : 10px;
+            padding      : 5px;
             border-radius: 8px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 18px;
+            font-size    : 14px;
+            font-weight  : 400;
+            line-height  : 18px;
           }
         }
       }
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  @media screen and (min-width:768px) and (max-width:1024px) {
     .popup__user-container {
-      width: 600px;
-      max-height: 45vh;
-      top: 27%;
+      width        : 600px;
+      max-height   : 45vh;
+      top          : 27%;
       border-radius: 15px;
-      padding: 22px;
+      padding      : 22px;
 
       .user-container__info {
+
         .user-container__info-photo {
-          width: 65px;
-          height: 65px;
+          width       : 65px;
+          height      : 65px;
           margin-right: 15px;
-          padding: 3px;
-          border: 2px solid $peachColor;
+          padding     : 3px;
+          border      : 2px solid $peachColor;
         }
 
         .user-container__info-background {
-          top: -52px;
-          left: -30px;
-          width: 600px;
+          top   : -52px;
+          left  : -30px;
+          width : 600px;
           height: 140px;
         }
 
@@ -428,14 +432,14 @@
 
           h3 {
             padding-top: 5px;
-            font-size: 16px;
+            font-size  : 16px;
             font-weight: 500;
             line-height: 20px;
           }
 
           p {
             padding-top: 3px;
-            font-size: 12px;
+            font-size  : 12px;
             font-weight: 400;
             line-height: 20px;
           }
@@ -443,7 +447,7 @@
 
         .user-container__info-socials {
           margin-left: 5px;
-          gap: 1px;
+          gap        : 1px;
         }
       }
 
@@ -451,8 +455,8 @@
         gap: 20px;
 
         h3 {
-          margin: 0 0 8px 0;
-          font-size: 16px;
+          margin     : 0 0 8px 0;
+          font-size  : 16px;
           font-weight: 500;
           line-height: 20px;
         }
@@ -460,7 +464,7 @@
         .user-container__category-companies,
         .user-container__category-directions,
         .user-container__category-skills {
-          padding: 6px;
+          padding      : 6px;
           border-radius: 6px;
         }
 
@@ -472,12 +476,12 @@
           .p-style__companies,
           .p-style__directions,
           .p-style__skills {
-            row-gap: 10px;
-            padding: 5px;
+            row-gap      : 10px;
+            padding      : 5px;
             border-radius: 6px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 16px;
+            font-size    : 14px;
+            font-weight  : 400;
+            line-height  : 16px;
           }
         }
       }
