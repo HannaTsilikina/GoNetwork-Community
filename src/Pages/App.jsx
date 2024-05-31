@@ -13,13 +13,12 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/search" element={<SearchingPage />} />
-        <Route path="/companies" element={<SearchingPage />} />
-        <Route path="/directions" element={<SearchingPage />} />
+        <Route path="/companies" element={<Companies />} />
+        <Route path="/directions" element={<Directions />} />
         <Route path="/companies/:id" element={<Companies />} />
         <Route path="/professions/:id" element={<Directions />} />
       </Routes>
     </Router>
   );
-
 }
 export default App;
