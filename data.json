@@ -314,15 +314,11 @@
       "id": 1001,
       "firstName": "Алена",
       "lastName": "Парахина",
-      "photo": "../public/images/users/user1.webp",
+      "photo": "/images/users/user1.webp",
       "quote": "Ценю рациональность, доброту и честность.",
-      "hobbies": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
+
+      "hobbies": [1, 2, 3, 4, 5],
+
       "companies": [
         {
           "id": 1,
@@ -392,14 +388,11 @@
       "id": 1002,
       "firstName": "Александра",
       "lastName": "Елдышова",
-      "photo": "../public/images/users/user2.webp",
+      "photo": "/images/users/user2.webp",
       "quote": "Важно слушать свое сердце и быть искренней к окружающим и по отношению к себе. Никогда не сдаваться и верить. И всегда сохранять улыбку на лице :)",
-      "hobbies": [
-        6,
-        7,
-        8,
-        9
-      ],
+
+      "hobbies": [6, 7, 8, 9],
+
       "companies": [
         {
           "id": 3,
@@ -469,13 +462,11 @@
       "id": 1003,
       "firstName": "Юлия",
       "lastName": "Реутова",
-      "photo": "../public/images/users/user3.webp",
+      "photo": "/images/users/user3.webp",
       "quote": "Ценю возможность заниматься нужным для общества делом и умение отличать действительность от иллюзий",
-      "hobbies": [
-        10,
-        11,
-        1
-      ],
+
+      "hobbies": [10, 11, 1],
+
       "companies": [
         {
           "id": 5,
@@ -541,15 +532,11 @@
       "id": 1004,
       "firstName": "Оля",
       "lastName": "Кукова",
-      "photo": "../public/images/users/OlyaKukova.webp",
+      "photo": "/images/users/OlyaKukova.webp",
       "quote": "Высоко ценю нетворк и командную работу, способность к критическому мышлению. Считаю, что развитие важнее всего.",
-      "hobbies": [
-        10,
-        12,
-        13,
-        14,
-        15
-      ],
+
+      "hobbies": [10, 12, 13, 14, 15],
+
       "companies": [
         {
           "id": 10,
@@ -651,14 +638,11 @@
       "id": 1005,
       "firstName": "Нелли",
       "lastName": "Сафина",
-      "photo": "../public/images/users/user4.webp",
+      "photo": "/images/users/user4.webp",
       "quote": "Мои ценности: сила и смелость, взаимопомощь и товарищество.",
-      "hobbies": [
-        16,
-        17,
-        18,
-        19
-      ],
+
+      "hobbies": [16, 17, 18, 19],
+
       "companies": [
         {
           "id": 15,
@@ -736,13 +720,11 @@
       "id": 1006,
       "firstName": "Ярославна",
       "lastName": "Степанова",
-      "photo": "../public/images/users/user5.webp",
+      "photo": "/images/users/user5.webp",
       "quote": "Для меня очень важны самореализация, семья и здоровый образ жизни.",
-      "hobbies": [
-        16,
-        20,
-        21
-      ],
+
+      "hobbies": [16, 20, 21],
+
       "companies": [
         {
           "id": 17,
@@ -796,15 +778,11 @@
       "id": 1007,
       "firstName": "Евгения",
       "lastName": "Астрихинская",
-      "photo": "../public/images/users/user5.webp",
+      "photo": "/images/users/user5.webp",
       "quote": "Мне важны свобода, достаток, поддержка друзей, реализация и активный образ жизни.",
-      "hobbies": [
-        22,
-        23,
-        24,
-        1,
-        10
-      ],
+
+      "hobbies": [22, 23, 24, 1, 10],
+
       "companies": [
         {
           "id": 22,
@@ -886,11 +864,11 @@
       "id": 1008,
       "firstName": "Елена",
       "lastName": "Фантова",
-      "photo": "../public/images/users/user5.webp",
+      "photo": "/images/users/user5.webp",
       "quote": "Самая большая ценность для меня -это люди. Открытость, честность и соблюдение границ.",
-      "hobbies": [
-        6
-      ],
+
+      "hobbies": [6],
+
       "companies": [
         {
           "id": 24,

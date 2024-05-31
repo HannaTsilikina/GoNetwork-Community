@@ -86,7 +86,7 @@ const MainScreen = () => {
 
   return (
     <main className="mainscreen__main">
-      <MainDepartments arrayOfCompanies={uniqueCompaniesPositions} />
+      <MainDepartments arrayOfCompaniesPositions={uniqueCompaniesPositions} />
       <MainUsers arrayOfMembers={selectedMembersID} />
       <MainProfessions arrayOfProfessions={uniqueDirectionsPositions} />
     </main>

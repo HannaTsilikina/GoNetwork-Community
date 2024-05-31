@@ -3,6 +3,7 @@ import "../../../Pages/Main/MainScreen.scss";
 import "./MainProfessions.scss";
 import randomProperties from "../../../helpers/RandomPosition";
 import { randomIntFromInterval } from "../../../helpers/commonFunctions";
+import data from "../../../../data.json";
 
 const arrayOfPosition = [
   "position-left-start",
@@ -13,11 +14,17 @@ const arrayOfPosition = [
 ];
 
 const arrayOfColors = ["pink100", "pink200", "pink400", "pink500"];
-
-const MainProfessions = ({ arrayOfProfessions }) => {
+const findId = (directionName) => {
+  for (let i = 0; i < data.directions.length; i++) {
+    if (data.directions[i].name === directionName) {
+      return data.directions[i].id;
+    }
+  }
+};
+const MainProfessions = ({ arrayOfProfessions, handleDirectionClick }) => {
   return (
     <div className="mainscreen-main__items">
-      {arrayOfProfessions.map((item, index) => {
+      {arrayOfProfessions.map((direction, index) => {
         let position = randomProperties(arrayOfPosition);
         let color = randomProperties(arrayOfColors);
         let display = "";
@@ -26,45 +33,44 @@ const MainProfessions = ({ arrayOfProfessions }) => {
         let marginBottom = `${randomIntFromInterval(0, 20)}px`;
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
-        if (item.length === 0) {
+        const id = findId(direction);
+
+        if (direction.length === 0) {
           display = "display";
           size = "sizeNone";
         }
-        if (item.length > 2) {
+        if (direction.length > 2) {
           size = "sizeXXS";
         }
-        if (item.length > 7) {
+        if (direction.length > 7) {
           size = "sizeXS";
         }
-        if (item.length > 9) {
+        if (direction.length > 9) {
           size = "sizeS";
         }
-        if (item.length > 11) {
+        if (direction.length > 11) {
           size = "sizeM";
         }
-        if (item.length > 12) {
+        if (direction.length > 12) {
           size = "sizeL";
         }
-        if (item.length > 18) {
+        if (direction.length > 18) {
           size = "sizeXL";
         }
+
         return (
-          <NavLink className="mainscreen__professions" key={index}>
-            <div
-              className={`mainscreen__profession ${position} ${color} ${size}`}
-              style={{
-                marginTop: `${marginTop}`,
-                marginBottom: `${marginBottom}`,
-                marginLeft: `${marginLeft}`,
-                marginRight: `${marginRight}`,
-              }}
-            >
-              {item}
-            </div>
+          <NavLink
+            className={`mainscreen__profession ${position} ${color} ${size}`}
+            style={{ marginTop, marginBottom, marginLeft, marginRight }}
+            to={`/professions/${id}`}
+            key={index}
+          >
+            {direction.split("/")[0]}
           </NavLink>
         );
       })}
     </div>
   );
 };
+
 export default MainProfessions;
