@@ -53,6 +53,7 @@
         display: flex;
         margin : 15px auto;
 
+
         .sp__container-result-users {
             position: relative;
             width   : 65vw;
@@ -64,6 +65,10 @@
                 display      : flex;
                 border-radius: 80px;
             }
+
+        p {
+          margin: 0 auto;
+
         }
 
         @media screen and (min-width: 1920px) {
