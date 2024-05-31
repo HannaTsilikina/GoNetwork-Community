@@ -1,21 +1,10 @@
 import { Link } from "react-router-dom";
 import "./MainUsers.scss";
-import "./../MainScreen.scss";
-import user from "../../../../assets/images/members/member.png";
+import "../../../Pages/Main/MainScreen.scss";
 import { useState, useEffect } from "react";
+import data from "../../../../data.json";
 
-const arrayOfUsers = [
-  user,
-  user,
-  user,
-  user,
-  user,
-  user,
-  user,
-  user,
-  user,
-  user,
-];
+const arrayOfUsers = data.members;
 
 const MainUsers = ({ arrayOfMembers }) => {
   const [positions, setPositions] = useState([]);
@@ -95,7 +84,7 @@ const MainUsers = ({ arrayOfMembers }) => {
             left: positions[index] ? positions[index].left : "0%",
           }}
         >
-          <img src={user} alt="image-user" />
+          <img src={user.photo} alt={`${user.firstName} ${user.lastName}`} />
         </Link>
       ))}
     </div>
