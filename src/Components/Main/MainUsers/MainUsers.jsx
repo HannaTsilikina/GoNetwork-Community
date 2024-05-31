@@ -2,11 +2,20 @@ import { Link } from "react-router-dom";
 import "./MainUsers.scss";
 import "../../../Pages/Main/MainScreen.scss";
 import { useState, useEffect } from "react";
+import UserComponent from "../../UserComponent/UserComponent";
 import data from "../../../../data.json";
 
 const arrayOfUsers = data.members;
 
 const MainUsers = ({ arrayOfMembers }) => {
+  const [activeUser, setActiveUser] = useState(null);
+  const handleUserHoverEnter = (userName) => {
+    setActiveUser(userName);
+  };
+
+  const handleUserHoverLeave = () => {
+    setActiveUser(null);
+  };
   const [positions, setPositions] = useState([]);
   const [isIntersectingThreshold, setIsIntersectingThreshold] = useState({
     top: 0,
@@ -51,7 +60,7 @@ const MainUsers = ({ arrayOfMembers }) => {
         do {
           newPosition = {
             top: `${Math.random() * 90}%`,
-            left: `${Math.random() * 90}%`,
+            left: `${Math.random() * 70}%`,
           };
           isIntersecting = newPositions.some(
             ({ top, left }) =>
@@ -76,16 +85,22 @@ const MainUsers = ({ arrayOfMembers }) => {
   return (
     <div className="mainscreen-main__workers">
       {arrayOfUsers.map((user, index) => (
-        <Link
-          key={index}
+        <div
+          key={user.id}
           className="sp__container-result-users-user"
           style={{
             top: positions[index] ? positions[index].top : "0%",
             left: positions[index] ? positions[index].left : "0%",
           }}
         >
-          <img src={user.photo} alt={`${user.firstName} ${user.lastName}`} />
-        </Link>
+          <UserComponent
+            user={user}
+            className="sp__container-result-users-user"
+            onUserHoverEnter={handleUserHoverEnter}
+            onUserHoverLeave={handleUserHoverLeave}
+            isActive={activeUser === `${user.firstName} ${user.lastName}`}
+          />
+        </div>
       ))}
     </div>
   );
