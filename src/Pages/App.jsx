@@ -5,6 +5,7 @@ import "./../style/App.scss";
 import Companies from "./Companies/Companies";
 import Directions from "./Directions/Directions";
 import MainScreen from "./Main/MainScreen";
+import CompaniesPage from "./CompaniesPage/CompaniesPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/search" element={<SearchingPage />} />
-        <Route path="/companies" element={<Companies />} />
+        <Route path="/companies" element={<CompaniesPage />} />
         <Route path="/directions" element={<Directions />} />
         <Route path="/companies/:id" element={<Companies />} />
         <Route path="/professions/:id" element={<Directions />} />

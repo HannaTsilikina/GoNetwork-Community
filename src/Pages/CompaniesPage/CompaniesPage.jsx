@@ -1,4 +1,4 @@
-import "./CompanyPage.scss";
+import "./CompaniesPage.scss";
 import "../SearchingPage/SearchingPage.scss"
 import data from "../../../data.json";
 import Departments from "../../Components/Departments/Departments";
@@ -6,7 +6,7 @@ import { randomIntFromInterval } from "../../helpers/commonFunctions";
 // import Search from "../../Components/Search/Search";
 import { useState, useMemo } from 'react';
 
-const CompanyPage = () => {
+const CompaniesPage = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -62,7 +62,7 @@ const CompanyPage = () => {
     return true
     })
   )
-  
+  console.log(filteredCompanies)
   const handleSearchInputChange = (event) => {
     const inputText = event.target.value;
     setSearchTerm(inputText);
@@ -81,10 +81,10 @@ const CompanyPage = () => {
         </div>
       </div>
       <div className="sp__container-result">
-      {filteredCompanies.length === 0 ? <p>Не найдено</p> : null}
+      {filteredCompanies.some(company => company.id) ? null : <p>Не найдено</p>}
       </div>
       <Departments arrayOfCompanies={filteredCompanies} />
     </main>
   );
 };
-export default CompanyPage;
+export default CompaniesPage;

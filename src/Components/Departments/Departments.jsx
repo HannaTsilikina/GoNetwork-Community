@@ -53,7 +53,7 @@ const Departments = ({ arrayOfCompanies }) => {
         
         return (
           <div className={`mainscreen__item ${position}`} key={index}>
-          <Link className="mainscreen__company" >
+          <Link to={`/companies/${company.id}`} className="mainscreen__company" >
             <div
               className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
               style={{
