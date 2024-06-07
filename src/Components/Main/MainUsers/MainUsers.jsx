@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./MainUsers.scss";
 import "../../../Pages/Main/MainScreen.scss";
 import { useState, useEffect } from "react";

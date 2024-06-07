@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import "./../MainScreen.scss";
 import "./Departments.scss";
 import randomProperties from "../../helpers/RandomPosition";
 import { randomIntFromInterval } from "../../helpers/commonFunctions";
@@ -14,7 +13,6 @@ const arrayOfPosition = [
 const arrayOfColors = ["violet300", "violet400", "violet500"];
 
 const Departments = ({ arrayOfCompanies }) => {
-
   return (
     <div className="departments__items">
       {arrayOfCompanies.map((company, index) => {
@@ -27,10 +25,9 @@ const Departments = ({ arrayOfCompanies }) => {
         let marginLeft = `${randomIntFromInterval(0, 10)}px`;
         let marginRight = `${randomIntFromInterval(0, 10)}px`;
 
-        
         if (company && company.name) {
-          const companyName = company.name
-           
+          const companyName = company.name;
+
           if (companyName.length > 2) {
             size = "sizeXXS";
           }
@@ -49,32 +46,34 @@ const Departments = ({ arrayOfCompanies }) => {
           if (companyName.length > 18) {
             size = "sizeXL";
           }
-        
-        
-        return (
-          <div className={`mainscreen__item ${position}`} key={index}>
-          <Link to={`/companies/${company.id}`} className="mainscreen__company" >
-            <div
-              className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
-              style={{
-                marginTop: `${marginTop}`,
-                marginBottom: `${marginBottom}`,
-                marginLeft: `${marginLeft}`,
-                marginRight: `${marginRight}`,
-              }}
-            >
-              {companyName}
+
+          return (
+            <div className={`mainscreen__item ${position}`} key={index}>
+              <Link
+                to={`/companies/${company.id}`}
+                className="mainscreen__company"
+              >
+                <div
+                  className={`mainscreen__department  ${position} ${color} ${size} ${display}`}
+                  style={{
+                    marginTop: `${marginTop}`,
+                    marginBottom: `${marginBottom}`,
+                    marginLeft: `${marginLeft}`,
+                    marginRight: `${marginRight}`,
+                  }}
+                >
+                  {companyName}
+                </div>
+              </Link>
             </div>
-          </Link>
-          </div>
-        );
-      } else {
-        return (
-          <div className={`mainscreen__item ${position}`} key={index}>
-            <div className={`mainscreen__department ${position} empty`} />
-          </div>
-        );
-      }
+          );
+        } else {
+          return (
+            <div className={`mainscreen__item ${position}`} key={index}>
+              <div className={`mainscreen__department ${position} empty`} />
+            </div>
+          );
+        }
       })}
     </div>
   );
